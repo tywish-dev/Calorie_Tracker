@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>850918062154-ogkrfatnmve8f0g6772nlbfr1qclmqs6.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.850918062154-ogkrfatnmve8f0g6772nlbfr1qclmqs6</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDb2H28aUJQaquA97TpTp6WII8EYYZkuC4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>850918062154</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.calorieTracker</string>
+	<key>PROJECT_ID</key>
+	<string>calorietracker-3eec7</string>
+	<key>STORAGE_BUCKET</key>
+	<string>calorietracker-3eec7.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:850918062154:ios:0b4f25d6e2b4b977828eb3</string>
+</dict>
+</plist>

@@ -67,7 +67,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '850918062154',
     projectId: 'calorietracker-3eec7',
     storageBucket: 'calorietracker-3eec7.appspot.com',
-    iosClientId: '850918062154-ogkrfatnmve8f0g6772nlbfr1qclmqs6.apps.googleusercontent.com',
+    iosClientId:
+        '850918062154-ogkrfatnmve8f0g6772nlbfr1qclmqs6.apps.googleusercontent.com',
     iosBundleId: 'com.example.calorieTracker',
   );
 
@@ -77,7 +78,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '850918062154',
     projectId: 'calorietracker-3eec7',
     storageBucket: 'calorietracker-3eec7.appspot.com',
-    iosClientId: '850918062154-ogkrfatnmve8f0g6772nlbfr1qclmqs6.apps.googleusercontent.com',
+    iosClientId:
+        '850918062154-ogkrfatnmve8f0g6772nlbfr1qclmqs6.apps.googleusercontent.com',
     iosBundleId: 'com.example.calorieTracker',
   );
 }

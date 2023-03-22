@@ -1,7 +1,10 @@
 import 'package:calorie_tracker/data/constants/constants.dart';
+import 'package:calorie_tracker/ui/view/screens/register_user_detail_screen.dart';
 import 'package:calorie_tracker/ui/view/widgets/login/custom_button.dart';
 import 'package:calorie_tracker/ui/view/widgets/login/custom_text_field.dart';
 import 'package:flutter/material.dart';
+
+import 'register_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -39,7 +42,15 @@ class _LoginScreenState extends State<LoginScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    TextButton(onPressed: () {}, child: Text("Sign up"))
+                    TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const RegisterScreen()));
+                        },
+                        child: const Text("Sign up"))
                   ],
                 ),
               ]),

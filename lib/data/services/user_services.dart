@@ -19,9 +19,23 @@ class UserServices {
     }
   }
 
+  Future<List<UserModel>> getUsers() async {
+    http.Response response = await http.get(getUrl("users"));
+
+    List<UserModel> list = [];
+    if (response.statusCode >= 200 && response.statusCode < 300) {
+      var data = jsonDecode(response.body);
+      for (var key in data.keys) {
+        UserModel user = UserModel.fromMap(data[key])..id = key;
+        list.add(user);
+      }
+    }
+    return list;
+  }
+
   Future<UserModel?> getUserByLocalId(String id) async {
     http.Response response = await http.get(getShallowUrl("users/$id/localId"));
-
+    List<UserModel> users = await getUsers();
     if (response.statusCode >= 200 && response.statusCode < 300) {
       return UserModel.fromJson(response.body)..id = id;
     } else {

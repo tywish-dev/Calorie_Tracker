@@ -10,18 +10,6 @@ class CircleProgressBar extends StatelessWidget {
     return Stack(
       alignment: Alignment.center,
       children: [
-        // const SimpleCircularProgressBar(
-        //   size: 175,
-        //   animationDuration: 5,
-        //   backColor: Colors.black12,
-        //   progressColors: [
-        //     Colors.cyan,
-        //     Colors.green,
-        //     Colors.amberAccent,
-        //     Colors.redAccent,
-        //     Colors.purpleAccent
-        //   ],
-        // ),
         CircularPercentIndicator(
           radius: 100.0,
           lineWidth: 20.0,

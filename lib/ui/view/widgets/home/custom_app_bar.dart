@@ -45,6 +45,8 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
             onPressed: () {},
             icon: const Icon(Icons.more_horiz),
             iconSize: 40,
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
             color: Colors.black,
           ),
         ),

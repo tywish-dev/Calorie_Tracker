@@ -43,6 +43,7 @@ dependencies:
   percent_indicator: ^4.2.3
   http: ^0.13.5
   faker: ^2.1.0
+  persistent_bottom_nav_bar: ^5.0.2
 
 dev_dependencies:
   flutter_test:

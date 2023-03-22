@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import '../widgets/home/bottom_nav_bar.dart';
+import '../widgets/home/custom_app_bar.dart';
 import 'package:calorie_tracker/ui/view/widgets/home/custom_app_bar.dart';
 import 'package:calorie_tracker/ui/view/widgets/home/linear_progress_bar.dart';
 import 'package:calorie_tracker/ui/view/widgets/home/text_with_icon.dart';

@@ -20,7 +20,7 @@ class CircleProgressBar extends StatelessWidget {
           animationDuration: 2000,
         ),
         Material(
-          elevation: 10,
+          elevation: 20,
           shape: const CircleBorder(),
           child: Container(
             height: 160,

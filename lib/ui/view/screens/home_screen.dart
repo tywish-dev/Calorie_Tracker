@@ -1,7 +1,6 @@
+import 'package:calorie_tracker/ui/view/widgets/home/circle_progress_indicator.dart';
 import 'package:calorie_tracker/ui/view/widgets/home/custom_app_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -10,7 +9,12 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(label: 'Home', isProfile: true, appBar: AppBar()),
-      body: Column(),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: const [
+          CircleProgressBar(),
+        ],
+      ),
     );
   }
 }

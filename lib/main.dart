@@ -1,3 +1,6 @@
+import 'package:calorie_tracker/data/constants/constants.dart';
+import '/ui/providers/bmi_provider.dart';
+import 'package:provider/provider.dart';
 import 'package:calorie_tracker/ui/view/screens/home_screen.dart';
 import '/ui/view/screens/login_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -6,7 +9,12 @@ import 'package:flutter/material.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   Firebase.initializeApp();
-  runApp(const MyApp());
+  runApp(MultiProvider(
+    providers: [
+      ListenableProvider(create: (_) => BmiProvider()),
+    ],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -19,6 +27,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
+        scaffoldBackgroundColor: bgOrange,
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+        disabledColor: Colors.transparent,
         primarySwatch: Colors.blue,
       ),
       home: HomeScreen(),

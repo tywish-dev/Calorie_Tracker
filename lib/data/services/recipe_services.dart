@@ -7,7 +7,8 @@ class RecipeServices {
       Uri.parse("https://api.calorieninjas.com/v1/recipe?query=$query");
 
   Future<List<Recipe>> getRecipe(String query) async {
-    http.Response response = await http.get(getUrl(query));
+    http.Response response = await http.get(getUrl(query),
+        headers: {'X-Api-Key': 'suogqiB2ZUkDoTvOElDCDQ==LTq0torYOlcrSr4R'});
 
     List<Recipe> recipes = [];
     var data = jsonDecode(response.body);

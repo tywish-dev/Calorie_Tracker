@@ -33,13 +33,16 @@ class UserServices {
     return list;
   }
 
-  Future<UserModel?> getUserByLocalId(String id) async {
-    http.Response response = await http.get(getShallowUrl("users/$id/localId"));
+  Future<UserModel?> getUserByLocalId(String localId) async {
     List<UserModel> users = await getUsers();
-    if (response.statusCode >= 200 && response.statusCode < 300) {
-      return UserModel.fromJson(response.body)..id = id;
-    } else {
-      return null;
+    for (var user in users) {
+      http.Response response =
+          await http.get(getShallowUrl("users/${user.id}/localId"));
+      if (localId == response.body) {
+        return user;
+      } else {
+        return null;
+      }
     }
   }
 }

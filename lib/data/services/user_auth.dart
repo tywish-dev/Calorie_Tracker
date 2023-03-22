@@ -38,7 +38,7 @@ class UserAuth {
     if (response.statusCode >= 200 && response.statusCode < 300) {
       var data = jsonDecode(response.body);
       user.localId = data["localId"];
-      UserServices().getUserByLocalId("");
+      UserServices().getUserByLocalId(user.localId);
       return user;
     } else {
       null;

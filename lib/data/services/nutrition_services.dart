@@ -8,7 +8,10 @@ class NutritionServices {
       Uri.parse("https://api.calorieninjas.com/v1/nutrition?query=$query");
 
   Future<List<Nutrition>> getNutrition(String query) async {
-    http.Response response = await http.get(getUrl(query));
+    http.Response response = await http.get(
+      getUrl(query),
+      headers: {'X-Api-Key': 'suogqiB2ZUkDoTvOElDCDQ==LTq0torYOlcrSr4R'},
+    );
 
     List<Nutrition> foods = [];
     var data = jsonDecode(response.body);

@@ -1,7 +1,7 @@
-import 'package:calorie_tracker/ui/view/widgets/home/custom_app_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+
+import '../widgets/home/bottom_nav_bar.dart';
+import '../widgets/home/custom_app_bar.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -10,7 +10,12 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(label: 'Home', isProfile: true, appBar: AppBar()),
-      body: Column(),
+      body: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        color: Colors.amber,
+      ),
+      bottomNavigationBar: BottomNavBar(),
     );
   }
 }

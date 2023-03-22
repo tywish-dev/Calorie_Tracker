@@ -1,5 +1,4 @@
 import 'package:calorie_tracker/ui/view/screens/home_screen.dart';
-
 import '/ui/view/screens/login_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';

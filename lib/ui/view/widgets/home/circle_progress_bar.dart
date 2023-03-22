@@ -1,7 +1,6 @@
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
-import 'package:simple_circular_progress_bar/simple_circular_progress_bar.dart';
 
 class CircleProgressBar extends StatelessWidget {
   const CircleProgressBar({super.key});
@@ -24,8 +23,8 @@ class CircleProgressBar extends StatelessWidget {
         //   ],
         // ),
         CircularPercentIndicator(
-          radius: 90.0,
-          lineWidth: 10.0,
+          radius: 100.0,
+          lineWidth: 20.0,
           percent: 0.8,
           progressColor: Colors.orange,
           backgroundColor: Colors.black12,
@@ -33,7 +32,7 @@ class CircleProgressBar extends StatelessWidget {
           animationDuration: 2000,
         ),
         Material(
-          elevation: 5,
+          elevation: 10,
           shape: const CircleBorder(),
           child: Container(
             height: 160,

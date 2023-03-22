@@ -1,7 +1,5 @@
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   const CustomAppBar(
@@ -18,17 +16,40 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(label),
+      title: Text(
+        label,
+        style:
+            const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+      ),
+      elevation: 0,
+      backgroundColor: Colors.transparent,
+      leadingWidth: 71,
       leading: isProfile == true
-          ? ClipRRect(
-              borderRadius: BorderRadius.circular(100),
-              child: Image.network(Faker()
-                  .image
-                  .image(random: true, keywords: ["profile pic", "asian"])),
+          ? Padding(
+              padding: const EdgeInsets.only(left: 15.0),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(100),
+                child: Image.network(
+                  Faker()
+                      .image
+                      .image(random: true, keywords: ["profile pic", "asian"]),
+                  fit: BoxFit.cover,
+                ),
+              ),
             )
           : null,
       actions: [
-        IconButton(onPressed: () {}, icon: Icon(Icons.more_horiz)),
+        Padding(
+          padding: const EdgeInsets.only(right: 5.0),
+          child: IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.more_horiz),
+            iconSize: 40,
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            color: Colors.black,
+          ),
+        ),
       ],
     );
   }

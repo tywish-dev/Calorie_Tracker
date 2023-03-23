@@ -4,15 +4,13 @@ import 'package:http/http.dart' as http;
 import 'user_auth.dart';
 
 class UserServices {
-  Future<UserModel?> postUser(UserModel user) async {
-    http.Response response = await http.post(
-      getUrl("users"),
+  Future<UserModel?> postUser(UserModel user, String localId) async {
+    http.Response response = await http.put(
+      getUrl("users/$localId"),
       body: user.toJson(),
       headers: {'Content-Type': "application/json"},
     );
     if (response.statusCode >= 200 && response.statusCode < 300) {
-      var data = jsonDecode(response.body);
-      user.id = data["name"];
       return user;
     }
   }

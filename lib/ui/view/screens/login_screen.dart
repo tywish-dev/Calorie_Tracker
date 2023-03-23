@@ -20,87 +20,69 @@ class _LoginScreenState extends State<LoginScreen> {
     TextEditingController _mailController = TextEditingController();
     TextEditingController _passwordController = TextEditingController();
     return Scaffold(
-        backgroundColor: bgOrange,
-        body: SafeArea(
-          child: Center(
-            child: Container(
-              height: MediaQuery.of(context).size.height * .6,
-              width: MediaQuery.of(context).size.width * .8,
-              decoration: BoxDecoration(
-                color: bgGreen.withOpacity(.9),
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Column(children: [
-                Center(
-                  child: Image.asset(
-                    "assets/logo.png",
-                    width: 200,
-                    height: 200,
-                  ),
+      backgroundColor: bgOrange,
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                height: MediaQuery.of(context).size.height * .6,
+                width: MediaQuery.of(context).size.width * .8,
+                decoration: BoxDecoration(
+                  color: bgGreen.withOpacity(.9),
+                  borderRadius: BorderRadius.circular(20),
                 ),
-                CustomTextField(
-                    controller: _mailController,
-                    label: "Email",
-                    obscureText: false),
-                CustomTextField(
-                    controller: _passwordController,
-                    label: "Password",
-                    obscureText: true),
-                CustomButton(
+                child: Column(children: [
+                  Center(
+                    child: Image.asset(
+                      "assets/logo.png",
+                      width: 200,
+                      height: 200,
+                    ),
+                  ),
+                  CustomTextField(
+                      controller: _mailController,
+                      label: "Email",
+                      obscureText: false),
+                  CustomTextField(
+                      controller: _passwordController,
+                      label: "Password",
+                      obscureText: true),
+                  CustomButton(
                     text: "Sign in",
                     onPressed: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const HomeScreen()));
-                    }, bgColor: false,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      "Don't you have account",
-                      style: TextStyle(color: bgOrange, fontSize: 12),
-                    ),
-                    TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const RegisterScreen()));
-                        },
-                        child: const Text(
-                          "Sign up",
-                          style: TextStyle(color: bgWhite, fontSize: 16),
-                        )),
-                  ],
-                ),
-              ]),
-            ),
-            child: Column(children: [
-              CustomTextField(
-                  controller: _mailController,
-                  label: "Email",
-                  obscureText: false),
-              CustomTextField(
-                  controller: _passwordController,
-                  label: "Password",
-                  obscureText: true),
-              CustomButton(text: "Sign in", onPressed: () {}),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const RegisterScreen()));
-                      },
-                      child: const Text("Sign up"))
-                ],
+                              builder: (context) => HomeScreen()));
+                    },
+                    bgColor: false,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        "Don't you have account",
+                        style: TextStyle(color: bgOrange, fontSize: 12),
+                      ),
+                      TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const RegisterScreen()));
+                          },
+                          child: const Text(
+                            "Sign up",
+                            style: TextStyle(color: bgWhite, fontSize: 16),
+                          )),
+                    ],
+                  ),
+                ]),
               ),
-            ]),
+            ],
           ),
         ),
       ),

@@ -17,6 +17,9 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      iconTheme: IconThemeData(
+        color: Colors.orange,
+      ),
       title: isProfile == false
           ? Text(
               label,
@@ -57,7 +60,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
             iconSize: 40,
             splashColor: Colors.transparent,
             highlightColor: Colors.transparent,
-            color: Colors.black,
+            color: Colors.black87,
           ),
         ),
       ],

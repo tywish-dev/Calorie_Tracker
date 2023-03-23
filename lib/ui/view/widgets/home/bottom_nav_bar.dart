@@ -81,7 +81,7 @@ class BottomNavBar extends StatelessWidget {
                 backgroundColor: bgGreen,
                 context: context,
                 builder: (context) =>
-                    index == 1 ? MealTimeCard() : HomeScreen(),
+                    index == 1 ? MealTimeCard() : Placeholder(),
               );
             },
           ),

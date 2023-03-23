@@ -1,9 +1,6 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:calorie_tracker/ui/view/screens/home_page_screen.dart';
-import 'package:calorie_tracker/ui/view/screens/home_screen.dart';
+import 'package:calorie_tracker/ui/view/screens/login_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -23,7 +20,7 @@ class SplashScreen extends StatelessWidget {
         duration: 2000,
         screenFunction: () async {
           //datalar çekilecek
-          return HomeScreen();
+          return const LoginScreen();
         },
       ),
     );

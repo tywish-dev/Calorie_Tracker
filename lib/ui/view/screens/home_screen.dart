@@ -55,7 +55,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                       const CircleProgressBar(),
                       SizedBox(
-                        width: 100,
+                        width: 50,
                         child: TextWithIcon(
                           label: "Burned",
                           num: Faker()

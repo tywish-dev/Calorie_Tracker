@@ -14,18 +14,31 @@ class UserServices {
       var data = jsonDecode(response.body);
       user.id = data["name"];
       return user;
-    } else {
-      return null;
     }
   }
 
-  Future<UserModel?> getUserByLocalId(String id) async {
-    http.Response response = await http.get(getShallowUrl("users/$id/localId"));
+  Future<List<UserModel>> getUsers() async {
+    http.Response response = await http.get(getUrl("users"));
 
+    List<UserModel> list = [];
     if (response.statusCode >= 200 && response.statusCode < 300) {
-      return UserModel.fromJson(response.body)..id = id;
-    } else {
-      return null;
+      var data = jsonDecode(response.body);
+      for (var key in data.keys) {
+        UserModel user = UserModel.fromMap(data[key])..id = key;
+        list.add(user);
+      }
+    }
+    return list;
+  }
+
+  Future<UserModel?> getUserByLocalId(String localId) async {
+    List<UserModel> users = await getUsers();
+    for (var user in users) {
+      http.Response response =
+          await http.get(getShallowUrl("users/${user.id}/localId"));
+      if (localId == response.body) {
+        return user;
+      }
     }
   }
 }

@@ -1,4 +1,5 @@
 import 'package:calorie_tracker/data/constants/constants.dart';
+import 'package:calorie_tracker/ui/view/screens/home_screen.dart';
 import 'package:calorie_tracker/ui/view/screens/register_user_detail_screen.dart';
 import 'package:calorie_tracker/ui/view/widgets/login/custom_button.dart';
 import 'package:calorie_tracker/ui/view/widgets/login/custom_text_field.dart';
@@ -46,10 +47,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     label: "Password",
                     obscureText: true),
                 CustomButton(
-                  text: "Sign in",
-                  onPressed: () {},
-                  bgColor: false,
-                ),
+                    text: "Sign in",
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const HomeScreen()));
+                    }, bgColor: false,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

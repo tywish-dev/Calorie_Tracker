@@ -2,18 +2,18 @@
 import 'dart:convert';
 
 class Nutrition {
-  int sugar_g;
-  int fiber_g;
-  int serving_size_g;
+  double sugar_g;
+  double fiber_g;
+  double serving_size_g;
   int sodium_mg;
   String name;
   int potassium_mg;
-  int fat_saturated_g;
-  int fat_total_g;
-  int calories;
+  double fat_saturated_g;
+  double fat_total_g;
+  double calories;
   int cholesterol_mg;
-  int protein_g;
-  int carbohydrates_total_g;
+  double protein_g;
+  double carbohydrates_total_g;
   Nutrition({
     required this.sugar_g,
     required this.fiber_g,
@@ -30,18 +30,18 @@ class Nutrition {
   });
 
   Nutrition copyWith({
-    int? sugar_g,
-    int? fiber_g,
-    int? serving_size_g,
+    double? sugar_g,
+    double? fiber_g,
+    double? serving_size_g,
     int? sodium_mg,
     String? name,
     int? potassium_mg,
-    int? fat_saturated_g,
-    int? fat_total_g,
-    int? calories,
+    double? fat_saturated_g,
+    double? fat_total_g,
+    double? calories,
     int? cholesterol_mg,
-    int? protein_g,
-    int? carbohydrates_total_g,
+    double? protein_g,
+    double? carbohydrates_total_g,
   }) {
     return Nutrition(
       sugar_g: sugar_g ?? this.sugar_g,
@@ -79,18 +79,18 @@ class Nutrition {
 
   factory Nutrition.fromMap(Map<String, dynamic> map) {
     return Nutrition(
-      sugar_g: map['sugar_g'] as int,
-      fiber_g: map['fiber_g'] as int,
-      serving_size_g: map['serving_size_g'] as int,
+      sugar_g: map['sugar_g'] as double,
+      fiber_g: map['fiber_g'] as double,
+      serving_size_g: map['serving_size_g'] as double,
       sodium_mg: map['sodium_mg'] as int,
       name: map['name'] as String,
       potassium_mg: map['potassium_mg'] as int,
-      fat_saturated_g: map['fat_saturated_g'] as int,
-      fat_total_g: map['fat_total_g'] as int,
-      calories: map['calories'] as int,
+      fat_saturated_g: map['fat_saturated_g'] as double,
+      fat_total_g: map['fat_total_g'] as double,
+      calories: map['calories'] as double,
       cholesterol_mg: map['cholesterol_mg'] as int,
-      protein_g: map['protein_g'] as int,
-      carbohydrates_total_g: map['carbohydrates_total_g'] as int,
+      protein_g: map['protein_g'] as double,
+      carbohydrates_total_g: map['carbohydrates_total_g'] as double,
     );
   }
 

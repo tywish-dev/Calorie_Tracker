@@ -1,4 +1,5 @@
 import 'package:calorie_tracker/ui/view/screens/home_page_screen.dart';
+import 'package:calorie_tracker/ui/view/screens/login_screen.dart';
 import 'package:calorie_tracker/ui/view/widgets/home/meal_time_card.dart';
 import 'package:flutter/material.dart';
 import '../widgets/home/bottom_nav_bar.dart';
@@ -80,10 +81,14 @@ class HomeScreen extends StatelessWidget {
                 ),
               ],
             ),
+            Padding(
+              padding: const EdgeInsets.only(top: 80),
+              child: CardView(),
+            ),
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavBar(),
+      bottomNavigationBar: LoginScreen(),
     );
   }
 }

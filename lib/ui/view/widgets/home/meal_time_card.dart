@@ -10,54 +10,63 @@ class MealTimeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.height * 0.3,
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 33),
-            child: Container(
+      child: Padding(
+        padding: const EdgeInsets.only(top: 33, right: 5, left: 10),
+        child: Column(
+          children: [
+            Container(
               height: 40,
               color: bgOrange,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("ÖĞÜNLER"),
+                  Text(
+                    "KAHVALTI",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
                 ],
               ),
             ),
-          ),
-          Divider(
-            color: Colors.black,
-            thickness: 5,
-          ),
-          Container(
-            height: 40,
-            color: bgOrange,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text("ÖĞÜNLER"),
-              ],
+            Divider(
+              color: Colors.black,
+              thickness: 5,
             ),
-          ),
-          Divider(
-            color: Colors.black,
-            thickness: 5,
-          ),
-          Container(
-            height: 40,
-            color: bgOrange,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text("ÖĞÜNLER"),
-              ],
+            Container(
+              height: 40,
+              color: bgOrange,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "ÖĞLE YEMEĞİ",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
+                ],
+              ),
             ),
-          ),
-          Divider(
-            color: Colors.black,
-            thickness: 5,
-          ),
-        ],
+            Divider(
+              color: Colors.black,
+              thickness: 5,
+            ),
+            Container(
+              height: 40,
+              color: bgOrange,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "AKŞAM YEMEĞİ",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
+                ],
+              ),
+            ),
+            Divider(
+              color: Colors.black,
+              thickness: 5,
+            ),
+          ],
+        ),
       ),
     );
   }

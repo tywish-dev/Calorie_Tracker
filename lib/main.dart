@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
         disabledColor: Colors.transparent,
         primarySwatch: Colors.blue,
       ),
-      home: NutritionFacts(),
+      home: LoginScreen(),
     );
   }
 }

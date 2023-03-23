@@ -1,3 +1,5 @@
+import 'package:calorie_tracker/data/constants/constants.dart';
+
 import '/ui/providers/bmi_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -13,6 +15,7 @@ class NumericCard extends StatelessWidget {
       width: size.width * 0.4,
       height: size.height * 0.23,
       child: Card(
+        color: bgGreen,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [

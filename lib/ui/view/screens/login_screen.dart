@@ -27,7 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                height: MediaQuery.of(context).size.height * .6,
+                height: MediaQuery.of(context).size.height * .7,
                 width: MediaQuery.of(context).size.width * .8,
                 decoration: BoxDecoration(
                   color: bgGreen.withOpacity(.9),

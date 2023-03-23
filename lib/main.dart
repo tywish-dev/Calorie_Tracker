@@ -1,5 +1,6 @@
+import 'package:calorie_tracker/ui/view/screens/nutritionFacts.dart';
+
 import '/ui/view/screens/food_search.dart';
-import '/ui/view/screens/home_page_screen.dart';
 import '/ui/view/screens/recipe_screen.dart';
 import '/ui/view/screens/splash_screen.dart';
 import '/ui/providers/nutrition_provider.dart';
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
         disabledColor: Colors.transparent,
         primarySwatch: Colors.blue,
       ),
-      home: SplashScreen(),
+      home: NutritionFacts(),
     );
   }
 }

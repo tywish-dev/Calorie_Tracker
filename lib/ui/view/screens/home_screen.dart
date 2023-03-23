@@ -55,7 +55,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                       const CircleProgressBar(),
                       SizedBox(
-                        width: 50,
+                        width: 100,
                         child: TextWithIcon(
                           label: "Burned",
                           num: Faker()
@@ -130,7 +130,6 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavBar(),
     );
   }
 }

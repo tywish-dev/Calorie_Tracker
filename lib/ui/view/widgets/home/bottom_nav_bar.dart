@@ -1,11 +1,11 @@
-import 'package:calorie_tracker/data/constants/constants.dart';
-import 'package:calorie_tracker/ui/view/screens/home_screen.dart';
-import 'package:calorie_tracker/ui/view/screens/profile_screen.dart';
-import 'package:calorie_tracker/ui/view/widgets/home/meal_time_card.dart';
+import 'package:calorie_tracker/ui/providers/page_provider.dart';
+import 'package:provider/provider.dart';
+
+import '/data/constants/constants.dart';
+import '/ui/view/screens/profile_screen.dart';
+import '/ui/view/widgets/home/meal_time_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 class BottomNavBar extends StatelessWidget {
@@ -35,6 +35,7 @@ class BottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    PageProvider pageProvider = Provider.of<PageProvider>(context);
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -54,21 +55,21 @@ class BottomNavBar extends StatelessWidget {
             gap: 8,
             activeColor: Colors.black,
             iconSize: 24,
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-            duration: Duration(milliseconds: 400),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+            duration: const Duration(milliseconds: 400),
             tabBackgroundColor: bgGreen,
             color: Colors.black,
-            tabs: [
+            tabs: const [
               GButton(
                 icon: CupertinoIcons.home,
                 text: 'Home',
               ),
               GButton(
                 icon: CupertinoIcons.add,
-                text: 'Likes',
+                text: 'Meals',
               ),
               GButton(
-                icon: CupertinoIcons.arrow_2_circlepath,
+                icon: CupertinoIcons.search,
                 text: 'Search',
               ),
               GButton(
@@ -80,18 +81,20 @@ class BottomNavBar extends StatelessWidget {
             onTabChange: (index) {
               switch (index) {
                 case 0:
+                  pageProvider.setPage(index);
                   break;
                 case 1:
+                  pageProvider.setPage(index);
                   showModalBottomSheet(
                       backgroundColor: bgGreen,
                       context: context,
-                      builder: (context) => MealTimeCard());
+                      builder: (context) => const MealTimeCard());
                   break;
                 case 2:
+                  pageProvider.setPage(index);
                   break;
                 case 3:
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ProfileScreen()));
+                  pageProvider.setPage(index);
                   break;
                 default:
               }

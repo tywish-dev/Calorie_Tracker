@@ -1,6 +1,6 @@
-import 'package:calorie_tracker/ui/providers/user_provider.dart';
-import 'package:calorie_tracker/ui/view/widgets/profile/bmi_card.dart';
-import 'package:calorie_tracker/ui/view/widgets/profile/profile_avatar.dart';
+import '/ui/providers/user_provider.dart';
+import '/ui/view/widgets/profile/bmi_card.dart';
+import '/ui/view/widgets/profile/profile_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -14,18 +14,18 @@ class ProfileScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            ProfileAvatar(),
-            SizedBox(
+            const ProfileAvatar(),
+            const SizedBox(
               height: 40,
             ),
             Text(
               userProvider.user.localId,
-              style: TextStyle(color: Colors.black),
+              style: const TextStyle(color: Colors.black),
             ),
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
-            BmiCard(),
+            const BmiCard(),
           ],
         ),
       ),

@@ -11,7 +11,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 class BottomNavBar extends StatelessWidget {
   BottomNavBar({super.key});
 
-  int _selectedIndex = 2;
+  int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
   static const List<Widget> _widgetOptions = <Widget>[
@@ -78,16 +78,23 @@ class BottomNavBar extends StatelessWidget {
             ],
             selectedIndex: _selectedIndex,
             onTabChange: (index) {
-              if (index == 1) {
-                showModalBottomSheet(
-                    backgroundColor: bgGreen,
-                    context: context,
-                    builder: (context) => MealTimeCard());
+              switch (index) {
+                case 0:
+                  break;
+                case 1:
+                  showModalBottomSheet(
+                      backgroundColor: bgGreen,
+                      context: context,
+                      builder: (context) => MealTimeCard());
+                  break;
+                case 2:
+                  break;
+                case 3:
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ProfileScreen()));
+                  break;
+                default:
               }
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ProfileScreen()));
-
-              index == 2 ? ProfileScreen() : null;
             },
           ),
         ),

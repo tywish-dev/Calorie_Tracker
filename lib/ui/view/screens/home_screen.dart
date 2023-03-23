@@ -1,4 +1,5 @@
 import 'package:calorie_tracker/ui/view/screens/login_screen.dart';
+import 'package:calorie_tracker/ui/view/widgets/home/bottom_nav_bar.dart';
 
 import '/data/constants/constants.dart';
 
@@ -88,7 +89,7 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: LoginScreen(),
+      bottomNavigationBar: BottomNavBar(),
     );
   }
 }

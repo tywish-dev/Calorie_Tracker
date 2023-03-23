@@ -1,3 +1,4 @@
+import 'package:calorie_tracker/data/constants/constants.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 
@@ -16,11 +17,13 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(
-        label,
-        style:
-            const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-      ),
+      title: isProfile == false
+          ? Text(
+              label,
+              style: const TextStyle(
+                  color: Colors.black, fontWeight: FontWeight.bold),
+            )
+          : null,
       elevation: 0,
       backgroundColor: Colors.transparent,
       leadingWidth: 71,
@@ -37,7 +40,14 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                 ),
               ),
             )
-          : null,
+          : IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: const Icon(
+                Icons.arrow_back_ios,
+                color: bgOrange,
+              )),
       actions: [
         Padding(
           padding: const EdgeInsets.only(right: 5.0),

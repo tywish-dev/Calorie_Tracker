@@ -1,3 +1,4 @@
+import 'package:calorie_tracker/data/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -19,6 +20,7 @@ class _SliderCardState extends State<SliderCard> {
       width: size.width * 0.4,
       height: size.height * 0.2,
       child: Card(
+        color: bgGreen,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [

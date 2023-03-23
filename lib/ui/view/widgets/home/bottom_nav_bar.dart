@@ -1,5 +1,6 @@
 import 'package:calorie_tracker/data/constants/constants.dart';
 import 'package:calorie_tracker/ui/view/screens/home_screen.dart';
+import 'package:calorie_tracker/ui/view/screens/profile_screen.dart';
 import 'package:calorie_tracker/ui/view/widgets/home/meal_time_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 class BottomNavBar extends StatelessWidget {
   BottomNavBar({super.key});
 
-  int _selectedIndex = 1;
+  int _selectedIndex = 2;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
   static const List<Widget> _widgetOptions = <Widget>[
@@ -79,6 +80,10 @@ class BottomNavBar extends StatelessWidget {
                     context: context,
                     builder: (context) => MealTimeCard());
               }
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ProfileScreen()));
+
+              index == 2 ? ProfileScreen() : null;
             },
           ),
         ),

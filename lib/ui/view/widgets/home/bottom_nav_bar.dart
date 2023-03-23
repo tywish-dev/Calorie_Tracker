@@ -64,10 +64,14 @@ class BottomNavBar extends StatelessWidget {
               ),
               GButton(
                 icon: CupertinoIcons.add,
-                text: 'Add',
+                text: 'Likes',
               ),
               GButton(
-                icon: CupertinoIcons.profile_circled,
+                icon: CupertinoIcons.arrow_2_circlepath,
+                text: 'Search',
+              ),
+              GButton(
+                icon: CupertinoIcons.settings,
                 text: 'Profile',
               ),
             ],

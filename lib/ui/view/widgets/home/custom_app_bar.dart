@@ -20,7 +20,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
       iconTheme: IconThemeData(
         color: Colors.orange,
       ),
-      title: isProfile == false
+      title: isProfile == true
           ? Text(
               label,
               style: const TextStyle(
@@ -28,7 +28,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
             )
           : null,
       elevation: 0,
-      backgroundColor: Colors.transparent,
+      backgroundColor: bgGreen,
       leadingWidth: 71,
       leading: isProfile == true
           ? Padding(

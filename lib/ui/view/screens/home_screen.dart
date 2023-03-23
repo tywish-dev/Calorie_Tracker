@@ -21,7 +21,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: bgGreen,
+      backgroundColor: bgWhite,
       appBar: CustomAppBar(
         label: 'Home',
         isProfile: true,
@@ -31,61 +31,102 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                SizedBox(
-                  width: 100,
-                  child: TextWithIcon(
-                    label: "Eaten",
-                    num: Faker()
-                        .randomGenerator
-                        .integer(500, min: 30)
-                        .toString(),
-                    icon: const Icon(Icons.local_dining),
+            Container(
+              decoration: BoxDecoration(
+                  color: bgGreen,
+                  borderRadius: BorderRadius.vertical(
+                      bottom: Radius.elliptical(
+                          MediaQuery.of(context).size.width, 100))),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      SizedBox(
+                        width: 100,
+                        child: TextWithIcon(
+                          label: "Eaten",
+                          num: Faker()
+                              .randomGenerator
+                              .integer(500, min: 30)
+                              .toString(),
+                          icon: const Icon(Icons.local_dining),
+                        ),
+                      ),
+                      const CircleProgressBar(),
+                      SizedBox(
+                        width: 100,
+                        child: TextWithIcon(
+                          label: "Burned",
+                          num: Faker()
+                              .randomGenerator
+                              .integer(500, min: 30)
+                              .toString(),
+                          icon: const Icon(Icons.local_fire_department),
+                        ),
+                      )
+                    ],
                   ),
-                ),
-                const CircleProgressBar(),
-                SizedBox(
-                  width: 100,
-                  child: TextWithIcon(
-                    label: "Burned",
-                    num: Faker()
-                        .randomGenerator
-                        .integer(500, min: 30)
-                        .toString(),
-                    icon: const Icon(Icons.local_fire_department),
+                  const SizedBox(
+                    height: 50,
                   ),
-                )
-              ],
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      const LinearProgressBar(
+                        color: Colors.green,
+                        label: "CARB",
+                        percent: 0.3,
+                      ),
+                      LinearProgressBar(
+                        label: "PROTEIN",
+                        color: Colors.pink.shade900,
+                        percent: 0.5,
+                      ),
+                      LinearProgressBar(
+                        label: "FAT",
+                        color: Colors.blue.shade800,
+                        percent: 0.8,
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 100,
+                  ),
+                ],
+              ),
             ),
-            const SizedBox(
-              height: 50,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                const LinearProgressBar(
-                  color: Colors.green,
-                  label: "CARB",
-                  percent: 0.3,
-                ),
-                LinearProgressBar(
-                  label: "PROTEIN",
-                  color: Colors.pink.shade900,
-                  percent: 0.5,
-                ),
-                LinearProgressBar(
-                  label: "FAT",
-                  color: Colors.blue.shade800,
-                  percent: 0.8,
-                ),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 80),
-              child: CardView(),
-            ),
+            Expanded(
+              child: SingleChildScrollView(
+                child: ListView(
+                    scrollDirection: Axis.vertical,
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    children: const [
+                      Padding(
+                          padding: EdgeInsets.only(top: 50),
+                          child: CardView(
+                              mealTitle: "Breakfast",
+                              foodName: "Hatdog",
+                              foodCalorie: "150/450 kcal",
+                              howMeal: "0")),
+                      Padding(
+                          padding: EdgeInsets.only(top: 20),
+                          child: CardView(
+                              mealTitle: "Lunch",
+                              foodName: "Pizza",
+                              foodCalorie: "150/450 kcal",
+                              howMeal: "1")),
+                      Padding(
+                          padding: EdgeInsets.only(top: 20),
+                          child: CardView(
+                              mealTitle: "Dinner",
+                              foodName: "Hamburger",
+                              foodCalorie: "150/450 kcal",
+                              howMeal: "2")),
+                    ]),
+              ),
+            )
           ],
         ),
       ),
@@ -93,3 +134,8 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
+
+    // this.mealTitle = "Breakfast",
+    // this.foodName = "Hotdog",
+    // this.foodCalorie = "150 / 450 Kcal",

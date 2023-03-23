@@ -1,3 +1,5 @@
+import 'package:calorie_tracker/ui/view/screens/login_screen.dart';
+import 'package:calorie_tracker/ui/view/widgets/login/custom_button.dart';
 import 'package:provider/provider.dart';
 import '../../providers/bmi_provider.dart';
 import '../widgets/register/gender_card.dart';
@@ -46,6 +48,14 @@ class RegisterUserDetail extends StatelessWidget {
               ),
             ],
           ),
+          CustomButton(
+            text: "Get Started",
+            onPressed: () => Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (BuildContext context) => const LoginScreen())),
+            bgColor: true,
+          )
         ],
       ),
     );

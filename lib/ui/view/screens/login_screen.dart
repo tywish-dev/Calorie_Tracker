@@ -26,10 +26,17 @@ class _LoginScreenState extends State<LoginScreen> {
               height: MediaQuery.of(context).size.height * .6,
               width: MediaQuery.of(context).size.width * .8,
               decoration: BoxDecoration(
-                color: bgGreen,
+                color: bgGreen.withOpacity(.9),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Column(children: [
+                Center(
+                  child: Image.asset(
+                    "assets/logo.png",
+                    width: 200,
+                    height: 200,
+                  ),
+                ),
                 CustomTextField(
                     controller: _mailController,
                     label: "Email",
@@ -38,10 +45,18 @@ class _LoginScreenState extends State<LoginScreen> {
                     controller: _passwordController,
                     label: "Password",
                     obscureText: true),
-                CustomButton(text: "Sign in", onPressed: () {}),
+                CustomButton(
+                  text: "Sign in",
+                  onPressed: () {},
+                  bgColor: false,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    const Text(
+                      "Don't you have account",
+                      style: TextStyle(color: bgOrange, fontSize: 12),
+                    ),
                     TextButton(
                         onPressed: () {
                           Navigator.push(
@@ -50,7 +65,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                   builder: (context) =>
                                       const RegisterScreen()));
                         },
-                        child: const Text("Sign up"))
+                        child: const Text(
+                          "Sign up",
+                          style: TextStyle(color: bgWhite, fontSize: 16),
+                        )),
                   ],
                 ),
               ]),

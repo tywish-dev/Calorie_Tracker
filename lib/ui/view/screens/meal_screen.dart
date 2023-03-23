@@ -33,7 +33,7 @@ class MealScreen extends StatelessWidget {
           child: Column(children: [
             Text(
               mealName,
-              style: TextStyle(
+              style: const TextStyle(
                   color: Colors.black,
                   fontSize: 40,
                   fontWeight: FontWeight.w500),
@@ -102,11 +102,11 @@ class MealScreen extends StatelessWidget {
                       ),
                     ),
                     ListView.builder(
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         itemCount: 3,
                         itemBuilder: (BuildContext, context) {
-                          return FoodCard(
+                          return const FoodCard(
                               image: "assets/food.png",
                               foodName: "Pizza",
                               kcal: 100,

@@ -1,8 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:calorie_tracker/data/constants/constants.dart';
+import '/data/constants/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
@@ -23,6 +21,7 @@ class CustomTextField extends StatelessWidget {
       child: TextFormField(
         cursorColor: bgOrange,
         focusNode: myfocusNode,
+        autocorrect: false,
         controller: controller,
         obscureText: obscureText,
         decoration: InputDecoration(

@@ -12,6 +12,7 @@ class UserModel {
   int height = 0;
   int age = 0;
   int weight = 0;
+
   List<Nutrition> foods = [];
   UserModel({
     required this.id,

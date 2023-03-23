@@ -1,7 +1,6 @@
 import 'package:calorie_tracker/ui/view/widgets/Nutrition%20Facts/mealDetails.dart';
 import 'package:calorie_tracker/ui/view/widgets/Nutrition%20Facts/mealInformation.dart';
 import 'package:flutter/material.dart';
-
 import '../../../data/constants/constants.dart';
 
 class NutritionFacts extends StatelessWidget {

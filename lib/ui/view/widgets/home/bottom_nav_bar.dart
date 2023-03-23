@@ -1,5 +1,6 @@
 import 'package:calorie_tracker/data/constants/constants.dart';
 import 'package:calorie_tracker/ui/view/screens/home_screen.dart';
+import 'package:calorie_tracker/ui/view/screens/profile_screen.dart';
 import 'package:calorie_tracker/ui/view/widgets/home/meal_time_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 class BottomNavBar extends StatelessWidget {
   BottomNavBar({super.key});
 
-  int _selectedIndex = 1;
+  int _selectedIndex = 2;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
   static const List<Widget> _widgetOptions = <Widget>[
@@ -55,7 +56,7 @@ class BottomNavBar extends StatelessWidget {
             iconSize: 24,
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
             duration: Duration(milliseconds: 400),
-            tabBackgroundColor: Colors.grey[100]!,
+            tabBackgroundColor: bgGreen,
             color: Colors.black,
             tabs: [
               GButton(
@@ -77,12 +78,16 @@ class BottomNavBar extends StatelessWidget {
             ],
             selectedIndex: _selectedIndex,
             onTabChange: (index) {
-              showModalBottomSheet(
-                backgroundColor: bgGreen,
-                context: context,
-                builder: (context) =>
-                    index == 1 ? MealTimeCard() : Placeholder(),
-              );
+              if (index == 1) {
+                showModalBottomSheet(
+                    backgroundColor: bgGreen,
+                    context: context,
+                    builder: (context) => MealTimeCard());
+              }
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ProfileScreen()));
+
+              index == 2 ? ProfileScreen() : null;
             },
           ),
         ),

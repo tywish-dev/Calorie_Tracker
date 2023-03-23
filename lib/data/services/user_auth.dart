@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import '/data/models/user_model.dart';
 import 'package:http/http.dart' as http;
 import '../models/user_auth_model.dart';
@@ -23,8 +24,6 @@ class UserAuth {
       user.localId = data["localId"];
       UserServices().postUser(user);
       return user;
-    } else {
-      null;
     }
   }
 
@@ -35,13 +34,11 @@ class UserAuth {
       body: userAuth.toJson(),
       headers: {'Content-Type': "application/json"},
     );
-    if (response.statusCode >= 200 && response.statusCode < 300) {
+    if (response.statusCode == HttpStatus.accepted) {
       var data = jsonDecode(response.body);
       user.localId = data["localId"];
       UserServices().getUserByLocalId(user.localId);
       return user;
-    } else {
-      null;
     }
   }
 }

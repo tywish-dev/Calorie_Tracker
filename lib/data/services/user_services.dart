@@ -40,8 +40,6 @@ class UserServices {
           await http.get(getShallowUrl("users/${user.id}/localId"));
       if (localId == response.body) {
         return user;
-      } else {
-        return null;
       }
     }
   }

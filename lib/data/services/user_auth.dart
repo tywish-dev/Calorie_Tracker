@@ -9,8 +9,6 @@ import 'user_services.dart';
 Uri getAuthUrl(String endpoint) =>
     Uri.parse("$AUTH_BASE_URL$endpoint?key=$AUTH_API");
 Uri getUrl(String endpoint) => Uri.parse("$BASE_URL$endpoint.json");
-Uri getShallowUrl(String endpoint) =>
-    Uri.parse("$BASE_URL$endpoint.json?shallow=true");
 
 class UserAuth {
   Future<UserModel?> signUp(UserAuthModel userAuth, UserModel user) async {

@@ -16,10 +16,10 @@ class NutritionServices {
     List<Nutrition> foods = [];
     var data = jsonDecode(response.body);
     if (response.statusCode >= 200 && response.statusCode < 300) {
-      for (var i = 0; i < data["items"].length; i++) {
-        Nutrition nutrition = Nutrition.fromMap(data["items"][i]);
+      for (var i in data["items"]) {
+        Nutrition nutrition = Nutrition.fromMap(i);
         foods.add(nutrition);
-        print(nutrition);
+        print(foods.length);
       }
     }
     return foods;

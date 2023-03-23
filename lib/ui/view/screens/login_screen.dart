@@ -20,20 +20,14 @@ class _LoginScreenState extends State<LoginScreen> {
     TextEditingController _mailController = TextEditingController();
     TextEditingController _passwordController = TextEditingController();
     return Scaffold(
-      backgroundColor: bgOrange,
-      body: SafeArea(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                height: MediaQuery.of(context).size.height * .6,
-                width: MediaQuery.of(context).size.width * .8,
-                decoration: BoxDecoration(
-                  color: bgGreen.withOpacity(.9),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Column(children: [
+      backgroundColor: bgGreen,
+      body: Column(
+        children: [
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Column(children: [
                   Center(
                     child: Image.asset(
                       "assets/logo.png",
@@ -67,24 +61,25 @@ class _LoginScreenState extends State<LoginScreen> {
                         style: TextStyle(color: bgOrange, fontSize: 12),
                       ),
                       TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const RegisterScreen()));
-                          },
-                          child: const Text(
-                            "Sign up",
-                            style: TextStyle(color: bgWhite, fontSize: 16),
-                          )),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const RegisterScreen()));
+                        },
+                        child: const Text(
+                          "Sign up",
+                          style: TextStyle(color: bgWhite, fontSize: 16),
+                        ),
+                      ),
                     ],
                   ),
                 ]),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

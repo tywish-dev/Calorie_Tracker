@@ -1,17 +1,12 @@
-import 'package:calorie_tracker/ui/view/screens/food_search.dart';
-import 'package:calorie_tracker/ui/view/screens/home_page_screen.dart';
-import 'package:calorie_tracker/ui/view/screens/recipe_screen.dart';
-import 'package:calorie_tracker/ui/view/screens/splash_screen.dart';
-import 'package:calorie_tracker/ui/view/screens/lunch_screen.dart';
-import 'package:calorie_tracker/ui/providers/nutrition_provider.dart';
-import 'package:calorie_tracker/ui/providers/recipe_provider.dart';
-import 'package:calorie_tracker/ui/providers/user_auth_provider.dart';
-import 'package:calorie_tracker/ui/providers/user_provider.dart';
-import '/data/constants/constants.dart';
+import 'package:calorie_tracker/ui/view/screens/login_screen.dart';
+
+import '/ui/view/screens/splash_screen.dart';
+import '/ui/providers/nutrition_provider.dart';
+import '/ui/providers/recipe_provider.dart';
+import '/ui/providers/user_auth_provider.dart';
+import '/ui/providers/user_provider.dart';
 import '/ui/providers/bmi_provider.dart';
 import 'package:provider/provider.dart';
-import '/ui/view/screens/home_screen.dart';
-import '/ui/view/screens/login_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -45,7 +40,7 @@ class MyApp extends StatelessWidget {
         disabledColor: Colors.transparent,
         primarySwatch: Colors.blue,
       ),
-      home: SplashScreen(),
+      home: LoginScreen(),
     );
   }
 }

@@ -77,7 +77,33 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ]),
             ),
+            child: Column(children: [
+              CustomTextField(
+                  controller: _mailController,
+                  label: "Email",
+                  obscureText: false),
+              CustomTextField(
+                  controller: _passwordController,
+                  label: "Password",
+                  obscureText: true),
+              CustomButton(text: "Sign in", onPressed: () {}),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const RegisterScreen()));
+                      },
+                      child: const Text("Sign up"))
+                ],
+              ),
+            ]),
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

@@ -33,8 +33,12 @@ class UserServices {
     List<UserModel> users = await getUsers();
     for (var user in users) {
       http.Response response = await http.get(getUrl("users/${user.id}"));
-      if (localId == response.body) {
-        return user;
+
+      if (response.statusCode == 200) {
+        var data = jsonDecode(response.body);
+        if (localId == data.key) {
+          return user;
+        }
       }
     }
   }

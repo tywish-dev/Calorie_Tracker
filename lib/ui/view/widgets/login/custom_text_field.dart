@@ -21,6 +21,7 @@ class CustomTextField extends StatelessWidget {
       child: TextFormField(
         cursorColor: bgOrange,
         focusNode: myfocusNode,
+        autocorrect: false,
         controller: controller,
         obscureText: obscureText,
         decoration: InputDecoration(

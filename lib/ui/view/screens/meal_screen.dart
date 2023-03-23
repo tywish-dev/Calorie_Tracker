@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:calorie_tracker/data/constants/constants.dart';
 import 'package:calorie_tracker/ui/view/widgets/home/circle_progress_bar.dart';
 import 'package:calorie_tracker/ui/view/widgets/home/custom_app_bar.dart';
@@ -5,17 +6,24 @@ import 'package:calorie_tracker/ui/view/widgets/meal/food_card.dart';
 import 'package:calorie_tracker/ui/view/widgets/meal/small_circle_progress_bar.dart';
 import 'package:flutter/material.dart';
 
-class LunchScreen extends StatefulWidget {
-  const LunchScreen({super.key});
+class MealScreen extends StatelessWidget {
+  final String mealName;
+  final int kcal;
+  final int kcalCarb;
+  final int kcalPro;
+  final int kcalFat;
 
-  @override
-  State<LunchScreen> createState() => _LunchScreenState();
-}
+  const MealScreen({
+    Key? key,
+    required this.mealName,
+    required this.kcal,
+    required this.kcalCarb,
+    required this.kcalPro,
+    required this.kcalFat,
+  }) : super(key: key);
 
-class _LunchScreenState extends State<LunchScreen> {
   @override
   Widget build(BuildContext context) {
-    String value = "value";
     return Scaffold(
       backgroundColor: bgGreen,
       appBar: CustomAppBar(label: "", isProfile: false, appBar: AppBar()),
@@ -23,15 +31,15 @@ class _LunchScreenState extends State<LunchScreen> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Column(children: [
-            const Text(
-              "Lunch",
-              style: TextStyle(
+            Text(
+              mealName,
+              style: const TextStyle(
                   color: Colors.black,
                   fontSize: 40,
                   fontWeight: FontWeight.w500),
             ),
             Text(
-              "Recommended portion : $value kcal",
+              "Recommended portion : $kcal kcal",
               style: const TextStyle(color: Colors.black54),
             ),
             Padding(
@@ -83,8 +91,9 @@ class _LunchScreenState extends State<LunchScreen> {
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.only(top: 20),
                       child: Text(
                         "Food",
@@ -92,16 +101,18 @@ class _LunchScreenState extends State<LunchScreen> {
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ),
-                    // ListView.builder(
-                    //     itemCount: 3,
-                    //     itemBuilder: (BuildContext, context) {
-                    //       FoodCard(
-                    //           image: "assets/food.png",
-                    //           foodName: "Pizza",
-                    //           kcal: 100,
-                    //           piece: 2,
-                    //           gr: 150);
-                    //     }),
+                    ListView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: 3,
+                        itemBuilder: (BuildContext, context) {
+                          return const FoodCard(
+                              image: "assets/food.png",
+                              foodName: "Pizza",
+                              kcal: 100,
+                              piece: 2,
+                              gr: 150);
+                        }),
                   ],
                 ),
               ),

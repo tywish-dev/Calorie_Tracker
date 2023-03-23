@@ -14,8 +14,6 @@ class UserServices {
       var data = jsonDecode(response.body);
       user.id = data["name"];
       return user;
-    } else {
-      return null;
     }
   }
 

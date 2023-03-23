@@ -17,8 +17,9 @@ class NutritionServices {
     var data = jsonDecode(response.body);
     if (response.statusCode >= 200 && response.statusCode < 300) {
       for (var i = 0; i < data["items"].length; i++) {
-        Nutrition nutrition = Nutrition.fromJson(data["items"][i]);
+        Nutrition nutrition = Nutrition.fromMap(data["items"][i]);
         foods.add(nutrition);
+        print(nutrition);
       }
     }
     return foods;

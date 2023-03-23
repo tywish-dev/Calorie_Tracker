@@ -1,3 +1,4 @@
+import 'package:calorie_tracker/data/services/nutrition_services.dart';
 import 'package:flutter/material.dart';
 import '../widgets/home/bottom_nav_bar.dart';
 import '../widgets/home/custom_app_bar.dart';
@@ -14,6 +15,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    NutritionServices().getNutrition("tomato");
     return Scaffold(
       appBar: CustomAppBar(label: 'Home', isProfile: true, appBar: AppBar()),
       body: Column(

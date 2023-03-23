@@ -103,18 +103,22 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             );
                           } else {
-                            await userAuthProvider.signInWithPassword(
-                              UserAuthModel(
-                                  email: _mailController.text,
-                                  password: _passwordController.text,
-                                  returnSecureToken: true),
-                              userProvider.user,
-                            );
+                            try {
+                              await userAuthProvider.signInWithPassword(
+                                UserAuthModel(
+                                    email: _mailController.text,
+                                    password: _passwordController.text,
+                                    returnSecureToken: true),
+                                userProvider.user,
+                              );
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => HomeScreen()));
+                            } catch (e) {
+                              print(e.toString());
+                            }
                           }
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => HomeScreen()));
                         },
                         bgColor: false,
                       ),

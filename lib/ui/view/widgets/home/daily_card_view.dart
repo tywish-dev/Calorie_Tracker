@@ -52,20 +52,29 @@ class CardView extends StatelessWidget {
                   ],
                 ),
                 Spacer(),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: 120,
-                      height: 110,
-                      child: Image.network(
-                        Faker().image.image(
-                          keywords: ["$foodName", "food"],
+                Stack(children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.all(10),
+                    color: Colors.white70,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: SizedBox(
+                            width: 100,
+                            height: 100,
+                            child: Image.network(
+                              Faker().image.image(
+                                keywords: ["$foodName", "food"],
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ]),
               ],
             ),
           ),

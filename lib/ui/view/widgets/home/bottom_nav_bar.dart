@@ -55,7 +55,7 @@ class BottomNavBar extends StatelessWidget {
             iconSize: 24,
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
             duration: Duration(milliseconds: 400),
-            tabBackgroundColor: Colors.grey[100]!,
+            tabBackgroundColor: bgGreen,
             color: Colors.black,
             tabs: [
               GButton(
@@ -77,12 +77,12 @@ class BottomNavBar extends StatelessWidget {
             ],
             selectedIndex: _selectedIndex,
             onTabChange: (index) {
-              showModalBottomSheet(
-                backgroundColor: bgGreen,
-                context: context,
-                builder: (context) =>
-                    index == 1 ? MealTimeCard() : Placeholder(),
-              );
+              if (index == 1) {
+                showModalBottomSheet(
+                    backgroundColor: bgGreen,
+                    context: context,
+                    builder: (context) => MealTimeCard());
+              }
             },
           ),
         ),

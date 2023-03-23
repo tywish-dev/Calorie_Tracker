@@ -1,3 +1,4 @@
+import 'package:calorie_tracker/ui/providers/page_provider.dart';
 import 'package:calorie_tracker/ui/view/screens/nutritionFacts.dart';
 import '/ui/view/screens/food_search.dart';
 import '/ui/view/screens/recipe_screen.dart';
@@ -24,6 +25,7 @@ void main() {
       ListenableProvider(create: (_) => UserAuthProvider()),
       ListenableProvider(create: (_) => RecipeProvider()),
       ListenableProvider(create: (_) => UserProvider()),
+      ListenableProvider(create: (_) => PageProvider()),
     ],
     child: const MyApp(),
   ));
@@ -44,7 +46,7 @@ class MyApp extends StatelessWidget {
         disabledColor: Colors.transparent,
         primarySwatch: Colors.blue,
       ),
-      home: LoginScreen(),
+      home: SplashScreen(),
     );
   }
 }

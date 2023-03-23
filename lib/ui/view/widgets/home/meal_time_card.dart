@@ -1,14 +1,12 @@
 import 'package:calorie_tracker/data/constants/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class MealTimeCard extends StatelessWidget {
   const MealTimeCard({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: MediaQuery.of(context).size.height * 0.3,
       child: Padding(
         padding: const EdgeInsets.only(top: 33, right: 5, left: 10),
@@ -19,15 +17,15 @@ class MealTimeCard extends StatelessWidget {
               color: bgOrange,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+                children: const [
                   Text(
-                    "KAHVALTI",
+                    "Breakfast",
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
             ),
-            Divider(
+            const Divider(
               color: Colors.black,
               thickness: 5,
             ),
@@ -36,15 +34,15 @@ class MealTimeCard extends StatelessWidget {
               color: bgOrange,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+                children: const [
                   Text(
-                    "ÖĞLE YEMEĞİ",
+                    "Lunch",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
                 ],
               ),
             ),
-            Divider(
+            const Divider(
               color: Colors.black,
               thickness: 5,
             ),
@@ -53,15 +51,15 @@ class MealTimeCard extends StatelessWidget {
               color: bgOrange,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+                children: const [
                   Text(
-                    "AKŞAM YEMEĞİ",
+                    "Dinner",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
                 ],
               ),
             ),
-            Divider(
+            const Divider(
               color: Colors.black,
               thickness: 5,
             ),

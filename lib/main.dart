@@ -1,4 +1,6 @@
 import 'package:calorie_tracker/data/constants/constants.dart';
+import 'package:calorie_tracker/ui/view/screens/home_page_screen.dart';
+import 'package:calorie_tracker/ui/view/screens/splash_screen.dart';
 import '/ui/providers/bmi_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:calorie_tracker/ui/view/screens/home_screen.dart';
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
         disabledColor: Colors.transparent,
         primarySwatch: Colors.blue,
       ),
-      home: HomeScreen(),
+      home: LoginScreen(),
     );
   }
 }

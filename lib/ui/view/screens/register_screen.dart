@@ -62,6 +62,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   const RegisterUserDetail()));
                     }
                   },
+                  bgColor: false,
                 ),
               ],
             ),

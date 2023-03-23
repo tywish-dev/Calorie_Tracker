@@ -1,16 +1,16 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:calorie_tracker/data/constants/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;
   final Function() onPressed;
+  final bool bgColor;
   const CustomButton({
     Key? key,
     required this.text,
     required this.onPressed,
+    required this.bgColor,
   }) : super(key: key);
 
   @override
@@ -21,7 +21,7 @@ class CustomButton extends StatelessWidget {
           height: 50,
           width: (MediaQuery.of(context).size.width * .8) - 60,
           decoration: BoxDecoration(
-              border: Border.all(color: bgOrange),
+              border: Border.all(color: bgColor == false ? bgOrange : bgGreen),
               borderRadius: BorderRadius.circular(20)),
           child: TextButton(
               style: ButtonStyle(
@@ -30,7 +30,7 @@ class CustomButton extends StatelessWidget {
               onPressed: onPressed,
               child: Text(
                 text,
-                style: TextStyle(color: bgOrange),
+                style: TextStyle(color: bgColor == false ? bgOrange : bgGreen),
               ))),
     );
   }

@@ -20,21 +20,30 @@ class CustomTextField extends StatelessWidget {
     FocusNode myfocusNode = FocusNode();
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-      child: TextField(
+      child: TextFormField(
+        cursorColor: bgOrange,
         focusNode: myfocusNode,
         controller: controller,
         obscureText: obscureText,
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: bgOrange),
+              borderSide: const BorderSide(color: bgOrange),
               borderRadius: BorderRadius.circular(20)),
           focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: bgOrange),
+              borderSide: const BorderSide(color: bgOrange),
               borderRadius: BorderRadius.circular(20)),
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
           labelText: label,
-          labelStyle: TextStyle(color: bgOrange),
+          labelStyle: const TextStyle(color: bgOrange),
         ),
+        validator: (value) {
+          if (obscureText == false) {
+            final bool emailValid = RegExp(
+                    r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                .hasMatch(value.toString());
+            return !emailValid ? "Geçerli bir email giriniz" : null;
+          }
+        },
       ),
     );
   }

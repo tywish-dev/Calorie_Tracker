@@ -1,6 +1,7 @@
 import 'package:calorie_tracker/ui/view/screens/home_page_screen.dart';
 import 'package:calorie_tracker/ui/view/screens/login_screen.dart';
 import 'package:calorie_tracker/ui/view/widgets/home/meal_time_card.dart';
+import 'package:calorie_tracker/data/services/nutrition_services.dart';
 import 'package:flutter/material.dart';
 import '../widgets/home/bottom_nav_bar.dart';
 import '../widgets/home/custom_app_bar.dart';
@@ -19,6 +20,7 @@ class HomeScreen extends StatelessWidget {
   int i = 1;
   @override
   Widget build(BuildContext context) {
+    NutritionServices().getNutrition("tomato");
     return Scaffold(
       backgroundColor: Colors.orange,
       appBar: CustomAppBar(

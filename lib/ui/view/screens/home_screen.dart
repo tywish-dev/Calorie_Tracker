@@ -1,15 +1,14 @@
-import 'package:calorie_tracker/ui/view/screens/home_page_screen.dart';
 import 'package:calorie_tracker/ui/view/screens/login_screen.dart';
-import 'package:calorie_tracker/ui/view/widgets/home/meal_time_card.dart';
-import 'package:calorie_tracker/data/services/nutrition_services.dart';
+
+import '/data/constants/constants.dart';
+
 import 'package:flutter/material.dart';
-import '../widgets/home/bottom_nav_bar.dart';
+
 import '../widgets/home/custom_app_bar.dart';
-import 'package:calorie_tracker/ui/view/widgets/home/custom_app_bar.dart';
-import 'package:calorie_tracker/ui/view/widgets/home/linear_progress_bar.dart';
-import 'package:calorie_tracker/ui/view/widgets/home/text_with_icon.dart';
+
+import '/ui/view/widgets/home/linear_progress_bar.dart';
+import '/ui/view/widgets/home/text_with_icon.dart';
 import 'package:faker/faker.dart';
-import 'package:flutter/material.dart';
 
 import '../widgets/home/circle_progress_bar.dart';
 import '../widgets/home/daily_card_view.dart';
@@ -20,9 +19,8 @@ class HomeScreen extends StatelessWidget {
   int i = 1;
   @override
   Widget build(BuildContext context) {
-    NutritionServices().getNutrition("tomato");
     return Scaffold(
-      backgroundColor: Colors.orange,
+      backgroundColor: bgGreen,
       appBar: CustomAppBar(
         label: 'Home',
         isProfile: true,

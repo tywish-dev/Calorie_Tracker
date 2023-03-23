@@ -1,11 +1,11 @@
-import 'package:calorie_tracker/data/constants/constants.dart';
+import '/data/models/recipe_model.dart';
 
-import '/data/models/nutrition_model.dart';
+import '/data/constants/constants.dart';
 import 'package:flutter/material.dart';
 
-class FoodItem extends StatelessWidget {
-  const FoodItem({super.key, required this.nutrition});
-  final Nutrition nutrition;
+class RecipeItem extends StatelessWidget {
+  const RecipeItem({super.key, required this.recipe});
+  final Recipe recipe;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,7 +28,7 @@ class FoodItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  nutrition.name,
+                  "recipe",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
@@ -38,7 +38,7 @@ class FoodItem extends StatelessWidget {
                   height: 5,
                 ),
                 Text(
-                  "${nutrition.calories} Calories, ${nutrition.serving_size_g.toInt()} gr, contains ${nutrition.protein_g} gr protein",
+                  "",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 14,

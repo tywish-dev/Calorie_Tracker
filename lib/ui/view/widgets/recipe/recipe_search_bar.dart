@@ -1,16 +1,15 @@
-import 'package:calorie_tracker/ui/providers/nutrition_provider.dart';
+import '/ui/providers/recipe_provider.dart';
 import 'package:provider/provider.dart';
 
 import '/data/constants/constants.dart';
 import 'package:flutter/material.dart';
 
-class CustomSearchBar extends StatelessWidget {
-  const CustomSearchBar({super.key, required this.textEditingController});
+class RecipeCustomSearchBar extends StatelessWidget {
+  const RecipeCustomSearchBar({super.key, required this.textEditingController});
   final TextEditingController textEditingController;
   @override
   Widget build(BuildContext context) {
-    NutritionProvider nutritionProvider =
-        Provider.of<NutritionProvider>(context);
+    RecipeProvider recipeProvider = Provider.of<RecipeProvider>(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -20,9 +19,9 @@ class CustomSearchBar extends StatelessWidget {
             controller: textEditingController,
             cursorColor: bgOrange,
             onSubmitted: (value) async {
-              await nutritionProvider
-                  .getNutrition(value)
-                  .then((_) => print(nutritionProvider.getFoods));
+              await recipeProvider
+                  .getRecipe(value)
+                  .then((_) => print(recipeProvider.getRecipes));
             },
             decoration: InputDecoration(
               prefixIcon: const Icon(
@@ -37,7 +36,7 @@ class CustomSearchBar extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20.0),
                 borderSide: const BorderSide(color: Colors.grey),
               ),
-              hintText: "Search in food database",
+              hintText: "Search in recipe database",
             ),
           ),
         ),

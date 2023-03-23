@@ -1,5 +1,6 @@
 import 'package:calorie_tracker/ui/view/screens/food_search.dart';
 import 'package:calorie_tracker/ui/view/screens/home_page_screen.dart';
+import 'package:calorie_tracker/ui/view/screens/recipe_screen.dart';
 import 'package:calorie_tracker/ui/view/screens/splash_screen.dart';
 import 'package:calorie_tracker/ui/view/screens/lunch_screen.dart';
 import 'package:calorie_tracker/ui/providers/nutrition_provider.dart';

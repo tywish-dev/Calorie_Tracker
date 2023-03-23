@@ -8,7 +8,7 @@ class RecipeProvider with ChangeNotifier {
   List<Recipe> get getRecipes => _recipes;
 
   Future getRecipe(String query) async {
-    RecipeServices().getRecipe(query);
+    _recipes = await RecipeServices().getRecipe(query);
     notifyListeners();
   }
 }

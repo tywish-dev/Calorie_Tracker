@@ -32,8 +32,7 @@ class UserServices {
   Future<UserModel?> getUserByLocalId(String localId) async {
     List<UserModel> users = await getUsers();
     for (var user in users) {
-      http.Response response =
-          await http.get(getShallowUrl("users/${user.id}/localId"));
+      http.Response response = await http.get(getUrl("users/${user.id}"));
       if (localId == response.body) {
         return user;
       }

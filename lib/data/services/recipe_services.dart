@@ -13,11 +13,13 @@ class RecipeServices {
     List<Recipe> recipes = [];
     var data = jsonDecode(response.body);
     if (response.statusCode >= 200 && response.statusCode < 300) {
-      for (var i = 0; i < data.length; i++) {
-        Recipe recipe = Recipe.fromJson(data[i]);
+      for (var i in data) {
+        Recipe recipe = Recipe.fromMap(i);
         recipes.add(recipe);
       }
     }
+    print(recipes.length);
+
     return recipes;
   }
 }

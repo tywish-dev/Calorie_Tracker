@@ -8,7 +8,7 @@ class NutritionProvider with ChangeNotifier {
   List<Nutrition> get getFoods => _foods;
 
   Future getNutrition(String query) async {
-    NutritionServices().getNutrition(query);
+    _foods = await NutritionServices().getNutrition(query);
     notifyListeners();
   }
 }

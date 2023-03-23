@@ -1,4 +1,8 @@
 import 'dart:convert';
+import 'package:calorie_tracker/ui/providers/recipe_provider.dart';
+import 'package:calorie_tracker/ui/view/widgets/recipe/recipe_item.dart';
+import 'package:calorie_tracker/ui/view/widgets/recipe/recipe_search_bar.dart';
+
 import '/ui/providers/nutrition_provider.dart';
 import '/ui/view/widgets/home/custom_app_bar.dart';
 import '/ui/view/widgets/search/food_item.dart';
@@ -6,18 +10,18 @@ import '/ui/view/widgets/search/search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class FoodSearch extends StatefulWidget {
-  const FoodSearch({super.key});
+class RecipeScreen extends StatefulWidget {
+  const RecipeScreen({super.key});
 
   @override
-  State<FoodSearch> createState() => _FoodSearchState();
+  State<RecipeScreen> createState() => _RecipeScreenState();
 }
 
-class _FoodSearchState extends State<FoodSearch> {
-  late TextEditingController foodSearch;
+class _RecipeScreenState extends State<RecipeScreen> {
+  late TextEditingController recipeSearch;
   @override
   void initState() {
-    foodSearch = TextEditingController(text: "tomato");
+    recipeSearch = TextEditingController(text: "risotto");
     super.initState();
   }
 
@@ -32,15 +36,15 @@ class _FoodSearchState extends State<FoodSearch> {
       body: Center(
         child: Column(
           children: [
-            CustomSearchBar(
-              textEditingController: foodSearch,
+            RecipeCustomSearchBar(
+              textEditingController: recipeSearch,
             ),
             Expanded(
-              child: Consumer<NutritionProvider>(
-                builder: (context, nutritionProvider, _) => ListView(
+              child: Consumer<RecipeProvider>(
+                builder: (context, recipeProvider, _) => ListView(
                   children: [
-                    ...nutritionProvider.getFoods
-                        .map((e) => FoodItem(nutrition: e))
+                    ...recipeProvider.getRecipes
+                        .map((e) => RecipeItem(recipe: e))
                         .toList(),
                   ],
                 ),

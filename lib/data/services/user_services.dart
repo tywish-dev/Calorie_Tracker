@@ -48,8 +48,11 @@ class UserServices {
 
   Future<Nutrition?> addNutrition(
       String localId, String category, Nutrition n) async {
-    http.Response response =
-        await http.post(getNutUrl("users/$localId/", category));
+    http.Response response = await http.post(
+      getNutUrl("users/$localId/food/", category),
+      body: n.toJson(),
+      headers: {'Content-Type': "application/json"},
+    );
 
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body);

@@ -84,7 +84,6 @@ class BottomNavBar extends StatelessWidget {
                   pageProvider.setPage(index);
                   break;
                 case 1:
-                  pageProvider.setPage(index);
                   showModalBottomSheet(
                       backgroundColor: Colors.white,
                       context: context,

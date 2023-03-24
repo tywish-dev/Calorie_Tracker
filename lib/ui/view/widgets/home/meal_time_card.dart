@@ -72,7 +72,17 @@ class MealTimeCard extends StatelessWidget {
               thickness: 5,
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => MealScreen(
+                            mealName: "Dinner",
+                            kcal: 30,
+                            kcalCarb: 40,
+                            kcalPro: 50,
+                            kcalFat: 50)));
+              },
               child: Container(
                 height: 40,
                 child: Row(

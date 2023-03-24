@@ -48,6 +48,7 @@ dependencies:
   google_nav_bar: ^5.0.6
   collection: ^1.17.0
   syncfusion_flutter_charts: ^21.1.35
+  dropdown_button2: ^2.0.0
   date_picker_timeline: ^1.2.3
 
 dev_dependencies:
@@ -77,6 +78,7 @@ flutter:
     - assets/
     - assets/userInformation/
     - assets/splashAnimation/
+    - assets/bakgroundAnimation/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

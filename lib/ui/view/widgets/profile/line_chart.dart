@@ -23,13 +23,17 @@ class _LineChartState extends State<LineChart> {
   @override
   Widget build(BuildContext context) {
     BmiProvider bmiInformation = Provider.of<BmiProvider>(context);
+
     double calculateBmi = bmiInformation.getWeight /
         (bmiInformation.getHeight * bmiInformation.getHeight / 10000);
+
     return Center(
       child: SizedBox(
-        height: 200,
+        height: 250,
         width: 300,
         child: SfCartesianChart(
+          title: ChartTitle(
+              text: "BMI Tracer", textStyle: TextStyle(color: bgOrange)),
           plotAreaBackgroundColor: bgGreen,
           series: <ChartSeries>[
             LineSeries<Salesdata, double>(
@@ -43,17 +47,17 @@ class _LineChartState extends State<LineChart> {
       ),
     );
   }
+}
 
-  List<Salesdata> getChartData() {
-    final List<Salesdata> chartData = [
-      Salesdata(18, 2019),
-      Salesdata(22, 2020),
-      Salesdata(20, 2021),
-      Salesdata(25, 2022),
-      Salesdata(22, 2023),
-    ];
-    return chartData;
-  }
+List<Salesdata> getChartData() {
+  final List<Salesdata> chartData = [
+    Salesdata(18, 2019),
+    Salesdata(22, 2020),
+    Salesdata(20, 2021),
+    Salesdata(25, 2022),
+    Salesdata(21, 2023),
+  ];
+  return chartData;
 }
 
 class Salesdata {

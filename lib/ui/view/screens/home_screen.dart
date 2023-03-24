@@ -1,5 +1,6 @@
 import 'package:calorie_tracker/ui/view/screens/login_screen.dart';
 import 'package:calorie_tracker/ui/view/widgets/home/bottom_nav_bar.dart';
+import 'package:calorie_tracker/ui/view/widgets/home/date.dart';
 
 import '/data/constants/constants.dart';
 
@@ -39,6 +40,10 @@ class HomeScreen extends StatelessWidget {
                           MediaQuery.of(context).size.width, 100))),
               child: Column(
                 children: [
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 10),
+                    child: Date(),
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -133,8 +138,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
-
-    // this.mealTitle = "Breakfast",
-    // this.foodName = "Hotdog",
-    // this.foodCalorie = "150 / 450 Kcal",

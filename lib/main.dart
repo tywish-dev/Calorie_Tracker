@@ -1,5 +1,6 @@
-
+import 'package:calorie_tracker/ui/view/screens/home_screen.dart';
 import 'package:calorie_tracker/ui/view/screens/profile_screen.dart';
+import 'package:calorie_tracker/ui/view/widgets/home/date.dart';
 import 'package:calorie_tracker/ui/view/widgets/profile/line_chart.dart';
 import 'package:calorie_tracker/ui/providers/page_provider.dart';
 import 'package:calorie_tracker/ui/view/screens/nutritionFacts.dart';
@@ -47,7 +48,7 @@ class MyApp extends StatelessWidget {
         disabledColor: Colors.transparent,
         primarySwatch: Colors.blue,
       ),
-      home: SplashScreen(),
+      home: const SplashScreen(),
     );
   }
 }

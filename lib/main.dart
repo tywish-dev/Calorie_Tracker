@@ -1,3 +1,6 @@
+
+import 'package:calorie_tracker/ui/view/screens/profile_screen.dart';
+import 'package:calorie_tracker/ui/view/widgets/profile/line_chart.dart';
 import 'package:calorie_tracker/ui/providers/page_provider.dart';
 import 'package:calorie_tracker/ui/view/screens/nutritionFacts.dart';
 import '/ui/view/screens/food_search.dart';

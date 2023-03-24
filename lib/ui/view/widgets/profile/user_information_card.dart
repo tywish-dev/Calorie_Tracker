@@ -1,9 +1,14 @@
+import 'package:calorie_tracker/data/constants/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
-class BmiCard extends StatelessWidget {
-  const BmiCard({super.key});
+class UserCard extends StatelessWidget {
+  final String text;
+  final String value;
+  const UserCard({
+    Key? key,
+    required this.text,
+    required this.value,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,8 +16,8 @@ class BmiCard extends StatelessWidget {
       children: [
         Center(
           child: Container(
-            height: MediaQuery.of(context).size.height * 0.2,
-            width: MediaQuery.of(context).size.width * 0.8,
+            height: MediaQuery.of(context).size.height * 0.15,
+            width: MediaQuery.of(context).size.width * .4,
             decoration: BoxDecoration(
               color: Colors.white,
               border: Border.all(color: Colors.white),
@@ -29,14 +34,26 @@ class BmiCard extends StatelessWidget {
             ),
             child: Column(
               children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.02,
+                ),
                 Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: Text(
-                    "Your BMI is",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    text,
+                    style: const TextStyle(
+                        color: bgOrange,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 25),
                   ),
                 ),
-                Text("100 kg/m2"),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: Text(
+                    value,
+                    style: const TextStyle(color: bgOrange, fontSize: 20),
+                  ),
+                ),
               ],
             ),
           ),

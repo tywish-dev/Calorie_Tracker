@@ -2,7 +2,6 @@ import '/data/models/nutrition_model.dart';
 import '/ui/view/widgets/Nutrition%20Facts/mealDetails.dart';
 import '/ui/view/widgets/Nutrition%20Facts/mealInformation.dart';
 import 'package:flutter/material.dart';
-
 import '../../../data/constants/constants.dart';
 
 class NutritionFacts extends StatelessWidget {

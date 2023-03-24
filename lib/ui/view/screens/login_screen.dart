@@ -1,5 +1,4 @@
 import 'package:calorie_tracker/ui/view/screens/main_screen.dart';
-
 import '/ui/providers/user_auth_provider.dart';
 import 'package:provider/provider.dart';
 import '../../../data/models/user_auth_model.dart';

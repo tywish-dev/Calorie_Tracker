@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:calorie_tracker/ui/providers/user_auth_provider.dart';
+import 'package:calorie_tracker/data/constants/constants.dart';
 import 'package:calorie_tracker/ui/view/screens/meal_screen.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
@@ -68,7 +69,7 @@ class CardView extends StatelessWidget {
           elevation: 0,
           shape: const RoundedRectangleBorder(
             side: BorderSide(
-              color: Colors.red,
+              color: bgOrange,
             ),
             borderRadius: BorderRadius.all(Radius.circular(12)),
           ),

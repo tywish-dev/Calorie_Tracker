@@ -1,6 +1,7 @@
 import 'package:calorie_tracker/data/models/user_auth_model.dart';
 import 'package:calorie_tracker/data/models/user_model.dart';
 import 'package:calorie_tracker/ui/providers/user_auth_provider.dart';
+import 'package:calorie_tracker/ui/view/screens/user_info_register.dart';
 import 'package:provider/provider.dart';
 
 import '../../providers/user_provider.dart';
@@ -125,7 +126,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const RegisterUserDetail(),
+                          builder: (context) => const UserInfoRegister(),
                         ),
                       );
                     }

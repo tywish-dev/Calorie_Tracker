@@ -93,7 +93,7 @@ class _UserInfoRegister extends State<UserInfoRegister> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const RegisterScreen()));
+                            builder: (context) => const RegisterUserDetail()));
                   },
                   bgColor: false,
                 ),

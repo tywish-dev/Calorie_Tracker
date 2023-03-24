@@ -86,7 +86,7 @@ class BottomNavBar extends StatelessWidget {
                 case 1:
                   pageProvider.setPage(index);
                   showModalBottomSheet(
-                      backgroundColor: bgGreen,
+                      backgroundColor: Colors.white,
                       context: context,
                       builder: (context) => const MealTimeCard());
                   break;

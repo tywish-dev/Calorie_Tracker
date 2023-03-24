@@ -1,4 +1,6 @@
 import 'package:calorie_tracker/ui/view/screens/main_screen.dart';
+import 'package:calorie_tracker/ui/view/screens/register_user_detail_screen.dart';
+import 'package:calorie_tracker/ui/view/screens/user_info_register.dart';
 import '/ui/providers/user_auth_provider.dart';
 import 'package:provider/provider.dart';
 import '../../../data/models/user_auth_model.dart';
@@ -135,10 +137,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       TextButton(
                         onPressed: () {
                           Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const RegisterScreen()));
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const UserInfoRegister(),
+                            ),
+                          );
                         },
                         child: const Text(
                           "Sign up",

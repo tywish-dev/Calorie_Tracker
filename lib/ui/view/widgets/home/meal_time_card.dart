@@ -1,4 +1,3 @@
-import 'package:calorie_tracker/data/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 class MealTimeCard extends StatelessWidget {
@@ -12,55 +11,61 @@ class MealTimeCard extends StatelessWidget {
         padding: const EdgeInsets.only(top: 33, right: 5, left: 10),
         child: Column(
           children: [
-            Container(
-              height: 40,
-              color: bgOrange,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Text(
-                    "Breakfast",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
-                ],
+            GestureDetector(
+              onTap: () {},
+              child: Container(
+                height: 40,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Text(
+                      "Breakfast",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
               ),
             ),
             const Divider(
-              color: Colors.black,
               thickness: 5,
             ),
-            Container(
-              height: 40,
-              color: bgOrange,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Text(
-                    "Lunch",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                  ),
-                ],
+            GestureDetector(
+              onTap: () {},
+              child: Container(
+                height: 40,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Text(
+                      "Lunch",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    ),
+                  ],
+                ),
               ),
             ),
             const Divider(
-              color: Colors.black,
               thickness: 5,
             ),
-            Container(
-              height: 40,
-              color: bgOrange,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Text(
-                    "Dinner",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                  ),
-                ],
+            GestureDetector(
+              onTap: () {},
+              child: Container(
+                height: 40,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Text(
+                      "Dinner",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    ),
+                  ],
+                ),
               ),
             ),
             const Divider(
-              color: Colors.black,
               thickness: 5,
             ),
           ],

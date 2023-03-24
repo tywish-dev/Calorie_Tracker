@@ -123,10 +123,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           userProvider.user);
 
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  const RegisterUserDetail()));
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const RegisterUserDetail(),
+                        ),
+                      );
                     }
                   },
                   bgColor: false,

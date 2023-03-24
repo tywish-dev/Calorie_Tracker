@@ -4,18 +4,26 @@ import 'package:calorie_tracker/ui/view/screens/nutritionFacts.dart';
 import '/data/models/nutrition_model.dart';
 import 'package:flutter/material.dart';
 
-class FoodItem extends StatelessWidget {
+class FoodItem extends StatefulWidget {
   const FoodItem({super.key, required this.nutrition});
   final Nutrition nutrition;
+
+  @override
+  State<FoodItem> createState() => _FoodItemState();
+}
+
+class _FoodItemState extends State<FoodItem> {
   @override
   Widget build(BuildContext context) {
+    var list = ['Breakfast', 'Lunch', 'Dinner'];
+    String dropDownValue = "Breakfast";
     return GestureDetector(
       onTap: () {
         Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) => NutritionFacts(
-              nutrition: nutrition,
+              nutrition: widget.nutrition,
             ),
           ),
         );
@@ -42,7 +50,7 @@ class FoodItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "${nutrition.name[0].toUpperCase()}${nutrition.name.substring(1).toLowerCase()}",
+                    "${widget.nutrition.name[0].toUpperCase()}${widget.nutrition.name.substring(1).toLowerCase()}",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
@@ -52,7 +60,7 @@ class FoodItem extends StatelessWidget {
                     height: 5,
                   ),
                   Text(
-                    "${nutrition.calories} Calories, ${nutrition.serving_size_g.toInt()} gr",
+                    "${widget.nutrition.calories} Calories, ${widget.nutrition.serving_size_g.toInt()} gr",
                     style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 14,
@@ -61,7 +69,34 @@ class FoodItem extends StatelessWidget {
                 ],
               ),
               const Spacer(),
-              IconButton(onPressed: () {}, icon: const Icon(Icons.add))
+              IconButton(
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          title: Text('Add ${widget.nutrition.name}'),
+                          content: DropdownButton(
+                            onChanged: (String? value) {
+                              setState(() {
+                                dropDownValue = value!;
+                              });
+                            },
+                            value: dropDownValue,
+                            items: list.map(
+                              (String items) {
+                                return DropdownMenuItem(
+                                  value: items,
+                                  child: Text(items),
+                                );
+                              },
+                            ).toList(),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                  icon: const Icon(Icons.add))
             ],
           ),
         ),

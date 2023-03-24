@@ -5,7 +5,6 @@ import 'package:calorie_tracker/ui/view/widgets/profile/profile_avatar.dart';
 import 'package:calorie_tracker/ui/view/widgets/profile/user_information_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../providers/bmi_provider.dart';
 import '../../providers/user_auth_provider.dart';
 import '../widgets/home/bottom_nav_bar.dart';

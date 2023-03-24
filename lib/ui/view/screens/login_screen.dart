@@ -127,7 +127,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                           const MainScreen()));
                               userAuthProvider.user = await UserServices()
                                   .getUserByLocalId(
-                                      userAuthProvider.user!.localId!);
+                                      userAuthProvider.user!.localId!,
+                                      userAuthProvider.user?.id);
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(

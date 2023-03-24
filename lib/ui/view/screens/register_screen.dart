@@ -120,13 +120,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               email: _mailController.text,
                               password: _passwordController.text,
                               returnSecureToken: true),
-                          userProvider.user);
+                          userAuthProvider.user!);
 
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  const RegisterUserDetail()));
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const RegisterUserDetail(),
+                        ),
+                      );
                     }
                   },
                   bgColor: false,

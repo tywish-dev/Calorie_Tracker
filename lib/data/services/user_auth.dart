@@ -20,7 +20,7 @@ class UserAuth {
     if (response.statusCode >= 200 && response.statusCode < 300) {
       var data = jsonDecode(response.body);
       user.localId = data["localId"];
-      UserServices().postUser(user, user.localId);
+      UserServices().postUser(user, user.localId!);
       return user;
     }
   }
@@ -35,8 +35,23 @@ class UserAuth {
     if (response.statusCode == HttpStatus.accepted) {
       var data = jsonDecode(response.body);
       user.localId = data["localId"];
-      UserServices().getUserByLocalId(user.localId);
+
+      UserServices().getUserByLocalId(user.localId!);
       return user;
     }
+  }
+
+  Future<bool> signInBoolean(UserAuthModel userAuth, UserModel user) async {
+    http.Response response = await http.post(
+      getAuthUrl("signInWithPassword"),
+      body: userAuth.toJson(),
+      headers: {'Content-Type': "application/json"},
+    );
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body);
+      user.localId = data["localId"];
+      return data["registered"];
+    }
+    return false;
   }
 }

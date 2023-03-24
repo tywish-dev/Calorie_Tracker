@@ -1,7 +1,6 @@
 import 'package:calorie_tracker/ui/view/screens/login_screen.dart';
 import 'package:calorie_tracker/ui/view/widgets/home/bottom_nav_bar.dart';
 import 'package:calorie_tracker/ui/view/widgets/home/date.dart';
-
 import '/data/constants/constants.dart';
 
 import 'package:flutter/material.dart';
@@ -34,10 +33,12 @@ class HomeScreen extends StatelessWidget {
           children: [
             Container(
               decoration: BoxDecoration(
-                  color: bgGreen,
-                  borderRadius: BorderRadius.vertical(
-                      bottom: Radius.elliptical(
-                          MediaQuery.of(context).size.width, 100))),
+                color: bgGreen,
+                borderRadius: BorderRadius.vertical(
+                  bottom:
+                      Radius.elliptical(MediaQuery.of(context).size.width, 100),
+                ),
+              ),
               child: Column(
                 children: [
                   Padding(
@@ -112,7 +113,7 @@ class HomeScreen extends StatelessWidget {
                           padding: EdgeInsets.only(top: 50),
                           child: CardView(
                               mealTitle: "Breakfast",
-                              foodName: "Hatdog",
+                              foodName: "Hotdog",
                               foodCalorie: "150/450 kcal",
                               howMeal: "0")),
                       Padding(

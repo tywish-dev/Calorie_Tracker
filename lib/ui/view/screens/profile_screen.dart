@@ -5,8 +5,8 @@ import 'package:calorie_tracker/ui/view/widgets/profile/profile_avatar.dart';
 import 'package:calorie_tracker/ui/view/widgets/profile/user_information_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../providers/bmi_provider.dart';
+import '../../providers/user_auth_provider.dart';
 import '../widgets/home/bottom_nav_bar.dart';
 import '/ui/providers/user_provider.dart';
 import '/ui/view/widgets/profile/profile_avatar.dart';
@@ -18,7 +18,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    UserProvider userProvider = Provider.of<UserProvider>(context);
+    UserAuthProvider userProvider = Provider.of<UserAuthProvider>(context);
     BmiProvider bmiInformation = Provider.of<BmiProvider>(context);
     double calculateBmi = bmiInformation.getWeight /
         (bmiInformation.getHeight * bmiInformation.getHeight / 10000);
@@ -35,7 +35,7 @@ class ProfileScreen extends StatelessWidget {
               height: 20,
             ),
             Text(
-              userProvider.user.localId,
+              userProvider.user!.name!,
               style: const TextStyle(color: Colors.black),
             ),
             LineChart(),

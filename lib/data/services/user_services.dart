@@ -22,7 +22,7 @@ class UserServices {
     if (response.statusCode >= 200 && response.statusCode < 300) {
       var data = jsonDecode(response.body);
       for (var key in data.keys) {
-        UserModel user = UserModel.fromMap(data[key])..id = key;
+        UserModel user = UserModel.fromMap(data[key])..localId = key;
         list.add(user);
       }
     }
@@ -30,16 +30,10 @@ class UserServices {
   }
 
   Future<UserModel?> getUserByLocalId(String localId) async {
-    List<UserModel> users = await getUsers();
-    for (var user in users) {
-      http.Response response = await http.get(getUrl("users/${user.id}"));
-
-      if (response.statusCode == 200) {
-        var data = jsonDecode(response.body);
-        if (localId == data.key) {
-          return user;
-        }
-      }
+    http.Response response = await http.get(getUrl("users/$localId"));
+    if (response.statusCode == 200) {
+      var data = response.body;
+      return UserModel.fromJson(data);
     }
   }
 }

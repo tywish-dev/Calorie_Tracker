@@ -30,6 +30,38 @@ class UserServices {
   //   }
   //   return list;
   // }
+  Future<List<Nutrition>?> getNutritionsByCategory(
+      String localId, String category) async {
+    http.Response response =
+        await http.get(getNutUrl("users/$localId/food/", category));
+    List<Nutrition> list = [];
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body);
+      for (var key in data.keys) {
+        Nutrition nutrition = Nutrition.fromMap(data[key])..id = key;
+        list.add(nutrition);
+      }
+    }
+    return list;
+  }
+
+  Future<bool> deleteNutrition(
+      String localId, String category, Nutrition n) async {
+    http.Response response = await http
+        .delete(getNutUrl("users/$localId/food/", "$category/${n.id}"));
+    return response.statusCode >= 200 && response.statusCode < 300;
+  }
+
+  Future<Nutrition?> getNutritionById(
+      String localId, String category, Nutrition n) async {
+    http.Response response =
+        await http.get(getNutUrl("users/$localId/food/", "$category/${n.id}"));
+    print(getNutUrl("users/$localId/food/", "$category/${n.id}"));
+    if (response.statusCode == 200) {
+      var data = response.body;
+      return Nutrition.fromJson(data);
+    }
+  }
 
   Future<UserModel?> getUserByLocalId(String localId, idToken) async {
     http.Response response = await http.get(getUrl("users/$localId", idToken));
@@ -61,15 +93,4 @@ class UserServices {
       return n;
     }
   }
-
-  // Future<List<Nutrition>?> getNutritions(
-  //     String localId, String category, Nutrition n) async {
-  //   http.Response response =
-  //       await http.get(Uri.parse("users/$localId/food/$category/${n.id}"));
-  //   if (response.statusCode == 200) {
-  //     var data = jsonDecode(response.body);
-
-  //     return n;
-  //   }
-  // }
 }

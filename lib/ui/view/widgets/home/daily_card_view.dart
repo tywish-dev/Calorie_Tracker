@@ -1,7 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:calorie_tracker/ui/providers/user_auth_provider.dart';
 import 'package:calorie_tracker/ui/view/screens/meal_screen.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CardView extends StatelessWidget {
   final String mealTitle;
@@ -18,44 +20,57 @@ class CardView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    UserAuthProvider userAuthProvider = Provider.of<UserAuthProvider>(context);
     return GestureDetector(
-      onTap: () => Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) {
-          if (howMeal == "0") {
-            return MealScreen(
-                mealName: "Breakfast",
-                kcal: 30,
-                kcalCarb: 40,
-                kcalPro: 50,
-                kcalFat: 50);
-          } else if (howMeal == "1") {
-            return MealScreen(
-                mealName: "Lunch",
-                kcal: 30,
-                kcalCarb: 40,
-                kcalPro: 50,
-                kcalFat: 50);
-          } else if (howMeal == "2") {
-            return MealScreen(
-                mealName: "Dinner",
-                kcal: 30,
-                kcalCarb: 40,
-                kcalPro: 50,
-                kcalFat: 50);
-          } else {
-            return Container();
-          }
-        }),
-      ),
+      onTap: () async {
+        await userAuthProvider.getNutritionByCategory(
+            userAuthProvider.user!.localId!,
+            howMeal == "0"
+                ? "Breakfast"
+                : howMeal == "1"
+                    ? "Lunch"
+                    : howMeal == "2"
+                        ? "Dinner"
+                        : "");
+        // ignore: use_build_context_synchronously
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) {
+            if (howMeal == "0") {
+              return const MealScreen(
+                  mealName: "Breakfast",
+                  kcal: 30,
+                  kcalCarb: 40,
+                  kcalPro: 50,
+                  kcalFat: 50);
+            } else if (howMeal == "1") {
+              return const MealScreen(
+                  mealName: "Lunch",
+                  kcal: 30,
+                  kcalCarb: 40,
+                  kcalPro: 50,
+                  kcalFat: 50);
+            } else if (howMeal == "2") {
+              return const MealScreen(
+                  mealName: "Dinner",
+                  kcal: 30,
+                  kcalCarb: 40,
+                  kcalPro: 50,
+                  kcalFat: 50);
+            } else {
+              return Container();
+            }
+          }),
+        );
+      },
       child: Center(
         child: Card(
           elevation: 0,
-          shape: RoundedRectangleBorder(
+          shape: const RoundedRectangleBorder(
             side: BorderSide(
               color: Colors.red,
             ),
-            borderRadius: const BorderRadius.all(Radius.circular(12)),
+            borderRadius: BorderRadius.all(Radius.circular(12)),
           ),
           child: SizedBox(
             width: 350,
@@ -74,7 +89,7 @@ class CardView extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        foodName,
+                        userAuthProvider.nList![0].name!,
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 50),
@@ -84,10 +99,10 @@ class CardView extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Stack(children: <Widget>[
                     Container(
-                      margin: EdgeInsets.all(10),
+                      margin: const EdgeInsets.all(10),
                       color: Colors.white70,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,

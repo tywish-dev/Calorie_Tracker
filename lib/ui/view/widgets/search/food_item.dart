@@ -1,5 +1,6 @@
 import 'package:calorie_tracker/data/constants/constants.dart';
 import 'package:calorie_tracker/ui/providers/dropdown_provider.dart';
+import 'package:calorie_tracker/ui/providers/user_auth_provider.dart';
 import 'package:calorie_tracker/ui/view/screens/nutritionFacts.dart';
 import 'package:calorie_tracker/ui/view/widgets/login/custom_button.dart';
 import 'package:provider/provider.dart';
@@ -19,6 +20,7 @@ class _FoodItemState extends State<FoodItem> {
   @override
   Widget build(BuildContext context) {
     DropdownProvider dropdownProvider = Provider.of<DropdownProvider>(context);
+    UserAuthProvider userAuthProvider = Provider.of<UserAuthProvider>(context);
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -52,7 +54,7 @@ class _FoodItemState extends State<FoodItem> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "${widget.nutrition.name[0].toUpperCase()}${widget.nutrition.name.substring(1).toLowerCase()}",
+                    "${widget.nutrition.name![0].toUpperCase()}${widget.nutrition.name!.substring(1).toLowerCase()}",
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
@@ -62,7 +64,7 @@ class _FoodItemState extends State<FoodItem> {
                     height: 5,
                   ),
                   Text(
-                    "${widget.nutrition.calories} Calories, ${widget.nutrition.serving_size_g.toInt()} gr",
+                    "${widget.nutrition.calories} Calories, ${widget.nutrition.serving_size_g!.toInt()} gr",
                     style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 14,
@@ -99,7 +101,14 @@ class _FoodItemState extends State<FoodItem> {
                                   width: 150,
                                   child: CustomButton(
                                     text: "Add",
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      userAuthProvider.addNutrition(
+                                        userAuthProvider.user!.localId!,
+                                        dropdownProvider.dropdownValue,
+                                        widget.nutrition,
+                                      );
+                                      Navigator.pop(context);
+                                    },
                                     bgColor: false,
                                   ),
                                 ),

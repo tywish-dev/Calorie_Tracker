@@ -12,12 +12,10 @@ import '/ui/providers/nutrition_provider.dart';
 import '/ui/providers/recipe_provider.dart';
 import '/ui/providers/user_auth_provider.dart';
 import '/ui/providers/user_provider.dart';
-import '/data/constants/constants.dart';
 import '/ui/providers/bmi_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'ui/view/screens/login_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

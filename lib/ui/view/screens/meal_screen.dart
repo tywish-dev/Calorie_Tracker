@@ -1,10 +1,15 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:calorie_tracker/data/constants/constants.dart';
+import 'package:calorie_tracker/data/models/nutrition_model.dart';
+import 'package:calorie_tracker/data/services/user_auth.dart';
+import 'package:calorie_tracker/ui/providers/user_auth_provider.dart';
 import 'package:calorie_tracker/ui/view/widgets/home/circle_progress_bar.dart';
 import 'package:calorie_tracker/ui/view/widgets/home/custom_app_bar.dart';
 import 'package:calorie_tracker/ui/view/widgets/meal/food_card.dart';
 import 'package:calorie_tracker/ui/view/widgets/meal/small_circle_progress_bar.dart';
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class MealScreen extends StatelessWidget {
   final String mealName;
@@ -24,6 +29,8 @@ class MealScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    UserAuthProvider userAuthProvider = Provider.of<UserAuthProvider>(context);
+
     return Scaffold(
       backgroundColor: bgGreen,
       appBar: CustomAppBar(label: "", isProfile: false, appBar: AppBar()),
@@ -88,33 +95,66 @@ class MealScreen extends StatelessWidget {
                 ]),
             child: Padding(
               padding: const EdgeInsets.all(20.0),
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.only(top: 20),
-                      child: Text(
-                        "Food",
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(top: 20),
+                    child: Text(
+                      "Food",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
-                    ListView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: 3,
-                        itemBuilder: (BuildContext, context) {
-                          return const FoodCard(
-                              image: "assets/food.png",
-                              foodName: "Pizza",
-                              kcal: 100,
-                              piece: 2,
-                              gr: 150);
-                        }),
-                  ],
-                ),
+                  ),
+                  Expanded(
+                      child: Consumer<UserAuthProvider>(
+                    builder: (context, userAuthProvider, _) => ListView(
+                      children: [
+                        ...userAuthProvider.nList!
+                            .map((e) => GestureDetector(
+                                  onLongPress: () async {
+                                    showDialog(
+                                      context: context,
+                                      builder: (context) {
+                                        return AlertDialog(
+                                          title:
+                                              Text("Want to delete ${e.name}"),
+                                          actions: [
+                                            SizedBox(
+                                              width: 150,
+                                              child: OutlinedButton(
+                                                onPressed: () async {
+                                                  userAuthProvider
+                                                      .deleteNutritionbyId(
+                                                          userAuthProvider
+                                                              .user!.localId!,
+                                                          mealName,
+                                                          e);
+                                                },
+                                                child: const Text("Delete"),
+                                              ),
+                                            )
+                                          ],
+                                        );
+                                      },
+                                    );
+                                  },
+                                  child: FoodCard(
+                                      // image: Faker().image.image(
+                                      //     keywords: ["${e.name}"],
+                                      //     height: 50,
+                                      //     width: 50,
+                                      //     random: true),
+                                      foodName: e.name!,
+                                      kcal: e.calories!.toInt(),
+                                      // piece: e.serving_size_g!.toInt(),
+                                      gr: e.serving_size_g!.toInt()),
+                                ))
+                            .toList(),
+                      ],
+                    ),
+                  )),
+                ],
               ),
             ))
       ]),

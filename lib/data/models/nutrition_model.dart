@@ -3,32 +3,32 @@ import 'dart:convert';
 
 class Nutrition {
   String? id;
-  double sugar_g;
-  double fiber_g;
-  double serving_size_g;
-  int sodium_mg;
-  String name;
-  int potassium_mg;
-  double fat_saturated_g;
-  double fat_total_g;
-  double calories;
-  int cholesterol_mg;
-  double protein_g;
-  double carbohydrates_total_g;
+  double? sugar_g;
+  double? fiber_g;
+  double? serving_size_g;
+  int? sodium_mg;
+  String? name;
+  int? potassium_mg;
+  double? fat_saturated_g;
+  double? fat_total_g;
+  double? calories;
+  int? cholesterol_mg;
+  double? protein_g;
+  double? carbohydrates_total_g;
   Nutrition({
     this.id,
-    required this.sugar_g,
-    required this.fiber_g,
-    required this.serving_size_g,
-    required this.sodium_mg,
-    required this.name,
-    required this.potassium_mg,
-    required this.fat_saturated_g,
-    required this.fat_total_g,
-    required this.calories,
-    required this.cholesterol_mg,
-    required this.protein_g,
-    required this.carbohydrates_total_g,
+    this.sugar_g,
+    this.fiber_g,
+    this.serving_size_g,
+    this.sodium_mg,
+    this.name,
+    this.fat_total_g,
+    this.potassium_mg,
+    this.fat_saturated_g,
+    this.calories,
+    this.cholesterol_mg,
+    this.protein_g,
+    this.carbohydrates_total_g,
   });
 
   Nutrition copyWith({

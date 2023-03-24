@@ -43,10 +43,11 @@ class _FoodSearchState extends State<FoodSearch> {
           Padding(
             padding: const EdgeInsets.only(top: 140),
             child: Opacity(
-                opacity: .6,
-                child: Lottie.network(
-                    "https://assets3.lottiefiles.com/packages/lf20_TmewUx.json",
-                    repeat: false)),
+              opacity: .6,
+              child: Lottie.network(
+                  "https://assets3.lottiefiles.com/packages/lf20_TmewUx.json",
+                  repeat: false),
+            ),
           ),
           Center(
             child: Column(

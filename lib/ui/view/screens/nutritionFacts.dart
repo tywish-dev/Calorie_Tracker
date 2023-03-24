@@ -50,14 +50,14 @@ class NutritionFacts extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "${nutrition.name[0].toUpperCase()}${nutrition.name.substring(1).toLowerCase()}",
+                        "${nutrition.name![0].toUpperCase()}${nutrition.name!.substring(1).toLowerCase()}",
                         style: const TextStyle(
                             fontSize: 30,
                             fontWeight: FontWeight.bold,
                             color: Colors.black),
                       ),
                       Text(
-                        "(${nutrition.serving_size_g.toInt()})",
+                        "(${nutrition.serving_size_g!.toInt()})",
                         style: const TextStyle(
                             fontSize: 25, fontWeight: FontWeight.bold),
                       )
@@ -81,7 +81,7 @@ class NutritionFacts extends StatelessWidget {
                             color: Colors.black),
                       ),
                       Text(
-                        "${nutrition.calories.toInt()}",
+                        "${nutrition.calories!.toInt()}",
                         style: const TextStyle(
                             fontSize: 25, fontWeight: FontWeight.bold),
                       )
@@ -109,49 +109,49 @@ class NutritionFacts extends StatelessWidget {
                     mealName: "Total Fat",
                     mealgr: "${nutrition.fat_total_g}",
                     percentage:
-                        "${(nutrition.serving_size_g / nutrition.fat_total_g) ~/ 30}"),
+                        "${(nutrition.serving_size_g! / nutrition.fat_total_g!) ~/ 30}"),
                 MealDetails(
                     mealName: "Satured Fat",
                     mealgr: "${nutrition.fat_saturated_g}",
                     percentage: nutrition.fat_saturated_g == 0
                         ? "0"
-                        : "${(nutrition.serving_size_g / nutrition.fat_saturated_g) ~/ 30}"),
+                        : "${(nutrition.serving_size_g! / nutrition.fat_saturated_g!) ~/ 30}"),
                 MealInformation(
                     mealName: "Cholesterol",
                     mealgr: "${nutrition.cholesterol_mg}",
                     percentage: nutrition.cholesterol_mg == 0
                         ? "0"
-                        : "${(nutrition.serving_size_g / nutrition.cholesterol_mg) ~/ 30}"),
+                        : "${(nutrition.serving_size_g! / nutrition.cholesterol_mg!) ~/ 30}"),
                 MealInformation(
                     mealName: "Sodium",
                     mealgr: "${nutrition.sodium_mg}",
                     percentage: nutrition.sodium_mg == 0
                         ? "0"
-                        : "${(nutrition.serving_size_g / nutrition.sodium_mg) ~/ 30}"),
+                        : "${(nutrition.serving_size_g! / nutrition.sodium_mg!) ~/ 30}"),
                 MealInformation(
                     mealName: "Total Carbohydrate",
                     mealgr: "${nutrition.carbohydrates_total_g}",
                     percentage: nutrition.carbohydrates_total_g == 0
                         ? "0"
-                        : "${(nutrition.serving_size_g / nutrition.carbohydrates_total_g) ~/ 30}"),
+                        : "${(nutrition.serving_size_g! / nutrition.carbohydrates_total_g!) ~/ 30}"),
                 MealDetails(
                     mealName: "Dietary Fiber",
                     mealgr: "${nutrition.fiber_g}",
                     percentage: nutrition.fiber_g == 0
                         ? "0"
-                        : "${(nutrition.serving_size_g / nutrition.fiber_g) ~/ 30}"),
+                        : "${(nutrition.serving_size_g! / nutrition.fiber_g!) ~/ 30}"),
                 MealDetails(
                     mealName: "Total Sugars",
                     mealgr: "${nutrition.sugar_g}",
                     percentage: nutrition.sugar_g == 0
                         ? "0"
-                        : "${(nutrition.serving_size_g / nutrition.sugar_g) ~/ 30}"),
+                        : "${(nutrition.serving_size_g! / nutrition.sugar_g!) ~/ 30}"),
                 MealInformation(
                     mealName: "Protein",
                     mealgr: "${nutrition.protein_g}",
                     percentage: nutrition.protein_g == 0
                         ? "0"
-                        : "${(nutrition.serving_size_g / nutrition.protein_g) ~/ 30}"),
+                        : "${(nutrition.serving_size_g! / nutrition.protein_g!) ~/ 30}"),
               ],
             ),
           ),

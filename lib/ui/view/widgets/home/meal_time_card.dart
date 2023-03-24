@@ -18,14 +18,14 @@ class MealTimeCard extends StatelessWidget {
                 Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                        builder: (BuildContext context) => MealScreen(
+                        builder: (BuildContext context) => const MealScreen(
                             mealName: "Breakfast",
                             kcal: 30,
                             kcalCarb: 40,
                             kcalPro: 50,
                             kcalFat: 50)));
               },
-              child: Container(
+              child: SizedBox(
                 height: 40,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -40,21 +40,21 @@ class MealTimeCard extends StatelessWidget {
               ),
             ),
             const Divider(
-              thickness: 5,
+              thickness: 3,
             ),
             GestureDetector(
               onTap: () {
                 Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                        builder: (BuildContext context) => MealScreen(
+                        builder: (BuildContext context) => const MealScreen(
                             mealName: "Lunch",
                             kcal: 30,
                             kcalCarb: 40,
                             kcalPro: 50,
                             kcalFat: 50)));
               },
-              child: Container(
+              child: SizedBox(
                 height: 40,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -69,21 +69,21 @@ class MealTimeCard extends StatelessWidget {
               ),
             ),
             const Divider(
-              thickness: 5,
+              thickness: 3,
             ),
             GestureDetector(
               onTap: () {
                 Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                        builder: (BuildContext context) => MealScreen(
+                        builder: (BuildContext context) => const MealScreen(
                             mealName: "Dinner",
                             kcal: 30,
                             kcalCarb: 40,
                             kcalPro: 50,
                             kcalFat: 50)));
               },
-              child: Container(
+              child: SizedBox(
                 height: 40,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -98,7 +98,7 @@ class MealTimeCard extends StatelessWidget {
               ),
             ),
             const Divider(
-              thickness: 5,
+              thickness: 3,
             ),
           ],
         ),

@@ -1,5 +1,8 @@
 import 'package:calorie_tracker/data/constants/constants.dart';
+import 'package:calorie_tracker/ui/providers/dropdown_provider.dart';
 import 'package:calorie_tracker/ui/view/screens/nutritionFacts.dart';
+import 'package:calorie_tracker/ui/view/widgets/login/custom_button.dart';
+import 'package:provider/provider.dart';
 
 import '/data/models/nutrition_model.dart';
 import 'package:flutter/material.dart';
@@ -15,8 +18,7 @@ class FoodItem extends StatefulWidget {
 class _FoodItemState extends State<FoodItem> {
   @override
   Widget build(BuildContext context) {
-    var list = ['Breakfast', 'Lunch', 'Dinner'];
-    String dropDownValue = "Breakfast";
+    DropdownProvider dropdownProvider = Provider.of<DropdownProvider>(context);
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -74,24 +76,36 @@ class _FoodItemState extends State<FoodItem> {
                     showDialog(
                       context: context,
                       builder: (context) {
-                        return AlertDialog(
-                          title: Text('Add ${widget.nutrition.name}'),
-                          content: DropdownButton(
-                            onChanged: (String? value) {
-                              setState(() {
-                                dropDownValue = value!;
-                              });
-                            },
-                            value: dropDownValue,
-                            items: list.map(
-                              (String items) {
-                                return DropdownMenuItem(
-                                  value: items,
-                                  child: Text(items),
-                                );
-                              },
-                            ).toList(),
-                          ),
+                        return Consumer<DropdownProvider>(
+                          builder: (context, dropdownProvider, _) {
+                            return AlertDialog(
+                              title: Text('Add ${widget.nutrition.name}'),
+                              content: DropdownButton(
+                                value: dropdownProvider.dropdownValue,
+                                icon: const Icon(Icons.keyboard_arrow_down),
+                                items:
+                                    dropdownProvider.list.map((String items) {
+                                  return DropdownMenuItem(
+                                    value: items,
+                                    child: Text(items),
+                                  );
+                                }).toList(),
+                                onChanged: (String? newValue) {
+                                  dropdownProvider.setValue(newValue!);
+                                },
+                              ),
+                              actions: [
+                                SizedBox(
+                                  width: 150,
+                                  child: CustomButton(
+                                    text: "Add",
+                                    onPressed: () {},
+                                    bgColor: false,
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
                         );
                       },
                     );

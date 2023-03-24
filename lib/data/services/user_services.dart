@@ -62,8 +62,14 @@ class UserServices {
     }
   }
 
-  Future<List<Nutrition>?> getNutritionById(
-      String localId, String nutId) async {
-    var response = await http.get(Uri.parse("users/$localId/$nutId"));
-  }
+  // Future<List<Nutrition>?> getNutritions(
+  //     String localId, String category, Nutrition n) async {
+  //   http.Response response =
+  //       await http.get(Uri.parse("users/$localId/food/$category/${n.id}"));
+  //   if (response.statusCode == 200) {
+  //     var data = jsonDecode(response.body);
+
+  //     return n;
+  //   }
+  // }
 }

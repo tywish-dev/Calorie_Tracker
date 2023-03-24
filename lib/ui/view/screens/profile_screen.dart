@@ -8,6 +8,10 @@ import 'package:provider/provider.dart';
 import '../../providers/bmi_provider.dart';
 import '../../providers/user_auth_provider.dart';
 import '../widgets/home/bottom_nav_bar.dart';
+import '/ui/providers/user_provider.dart';
+import '/ui/view/widgets/profile/profile_avatar.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -23,9 +27,12 @@ class ProfileScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            const ProfileAvatar(),
+            const Padding(
+              padding: EdgeInsets.only(top: 20),
+              child: ProfileAvatar(),
+            ),
             const SizedBox(
-              height: 40,
+              height: 20,
             ),
             Text(
               userProvider.user!.name!,

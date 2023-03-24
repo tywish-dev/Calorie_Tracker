@@ -25,8 +25,8 @@ class _FoodSearchState extends State<FoodSearch> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        label: "Home",
-        isProfile: false,
+        label: "",
+        isProfile: true,
         appBar: AppBar(),
       ),
       body: Center(

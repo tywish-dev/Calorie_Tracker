@@ -1,6 +1,6 @@
 import '/data/models/nutrition_model.dart';
-import '/ui/view/widgets/Nutrition%20Facts/mealDetails.dart';
-import '/ui/view/widgets/Nutrition%20Facts/mealInformation.dart';
+import '../widgets/nutrition_facts/mealDetails.dart';
+import '../widgets/nutrition_facts/mealInformation.dart';
 import 'package:flutter/material.dart';
 import '../../../data/constants/constants.dart';
 

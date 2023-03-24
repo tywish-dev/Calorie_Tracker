@@ -8,7 +8,8 @@ import 'user_services.dart';
 
 Uri getAuthUrl(String endpoint) =>
     Uri.parse("$AUTH_BASE_URL$endpoint?key=$AUTH_API");
-Uri getUrl(String endpoint) => Uri.parse("$BASE_URL$endpoint.json");
+Uri getUrl(String endpoint, idToken) =>
+    Uri.parse("$BASE_URL$endpoint.json?auth=$idToken");
 
 class UserAuth {
   Future<UserModel?> signUp(UserAuthModel userAuth, UserModel user) async {
@@ -35,8 +36,8 @@ class UserAuth {
     if (response.statusCode == HttpStatus.accepted) {
       var data = jsonDecode(response.body);
       user.localId = data["localId"];
-
-      UserServices().getUserByLocalId(user.localId!);
+      user.id = data["idToken"];
+      UserServices().getUserByLocalId(user.localId!, user.id);
       return user;
     }
   }

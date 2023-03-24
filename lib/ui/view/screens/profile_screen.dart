@@ -7,11 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../providers/bmi_provider.dart';
 import '../../providers/user_auth_provider.dart';
-import '../widgets/home/bottom_nav_bar.dart';
-import '/ui/providers/user_provider.dart';
-import '/ui/view/widgets/profile/profile_avatar.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -20,8 +15,7 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     UserAuthProvider userProvider = Provider.of<UserAuthProvider>(context);
     BmiProvider bmiInformation = Provider.of<BmiProvider>(context);
-    double calculateBmi = bmiInformation.getWeight /
-        (bmiInformation.getHeight * bmiInformation.getHeight / 10000);
+
     return Scaffold(
       backgroundColor: bgGreen,
       body: SafeArea(
@@ -47,11 +41,11 @@ class ProfileScreen extends StatelessWidget {
                 children: [
                   UserCard(
                     text: "BMI",
-                    value: "${calculateBmi.toStringAsFixed(2)}",
+                    value: "${bmiInformation.getBmiResult.toStringAsFixed(2)}",
                   ),
                   UserCard(
                     text: "Age",
-                    value: bmiInformation.getAge.toString(),
+                    value: userProvider.user!.age.toString(),
                   )
                 ],
               ),
@@ -63,10 +57,10 @@ class ProfileScreen extends StatelessWidget {
                 children: [
                   UserCard(
                       text: "Height",
-                      value: bmiInformation.getHeight.toString()),
+                      value: userProvider.user!.height.toString()),
                   UserCard(
                       text: "Weight",
-                      value: bmiInformation.getWeight.toString())
+                      value: userProvider.user!.weight.toString())
                 ],
               ),
             ),

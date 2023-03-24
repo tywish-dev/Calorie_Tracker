@@ -31,6 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
   void initState() {
     _mailController = TextEditingController(text: "samet@test.com");
     _passwordController = TextEditingController(text: "123456");
+    Navigator.popUntil(context, (route) => true);
     super.initState();
   }
 
@@ -126,7 +127,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                           const MainScreen()));
                               userAuthProvider.user = await UserServices()
                                   .getUserByLocalId(
-                                      userAuthProvider.user!.localId!);
+                                      userAuthProvider.user!.localId!,
+                                      userAuthProvider.user?.id);
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(

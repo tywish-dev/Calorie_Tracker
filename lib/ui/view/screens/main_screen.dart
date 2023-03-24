@@ -16,8 +16,8 @@ class MainScreen extends StatelessWidget {
     List<Widget> pages = [
       HomeScreen(),
       HomeScreen(),
-      FoodSearch(),
-      ProfileScreen()
+      const FoodSearch(),
+      const ProfileScreen()
     ];
     PageProvider pageProvider = Provider.of<PageProvider>(context);
     return Scaffold(

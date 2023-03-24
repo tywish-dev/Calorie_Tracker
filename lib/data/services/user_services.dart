@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'package:calorie_tracker/data/models/nutrition_model.dart';
+
 import '../models/user_model.dart';
 import 'package:http/http.dart' as http;
 import 'user_auth.dart';
@@ -42,5 +44,10 @@ class UserServices {
         body: user.toJson(), headers: {'Content-Type': "application/json"});
 
     return response.statusCode >= 200 && response.statusCode < 300;
+  }
+
+  Future<List<Nutrition>?> postNutritions(
+      String localId, String endpoint) async {
+    var response = await http.post(Uri.parse("users/$localId/$endpoint"));
   }
 }

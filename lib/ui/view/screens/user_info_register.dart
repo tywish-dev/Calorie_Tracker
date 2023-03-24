@@ -91,7 +91,7 @@ class _UserInfoRegister extends State<UserInfoRegister> {
                     userAuthProvider.user!.name =
                         "${_userNameController.text} ${_userSurnameController.text}";
                     userAuthProvider.user!.targetCalorie =
-                        int.tryParse(_userNameController.text);
+                        int.parse(_targetCalorieController.text);
                     Navigator.push(
                         context,
                         MaterialPageRoute(

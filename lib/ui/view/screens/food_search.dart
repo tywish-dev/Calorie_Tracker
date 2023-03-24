@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'package:calorie_tracker/data/constants/constants.dart';
+
 import '/ui/providers/nutrition_provider.dart';
 import '/ui/view/widgets/home/custom_app_bar.dart';
 import '/ui/view/widgets/search/food_item.dart';
@@ -30,26 +32,28 @@ class _FoodSearchState extends State<FoodSearch> {
         appBar: AppBar(),
       ),
       body: Center(
-        child: Column(
-          children: [
-            SizedBox(
-              height: 10,
-            ),
-            CustomSearchBar(
-              textEditingController: foodSearch,
-            ),
-            Expanded(
-              child: Consumer<NutritionProvider>(
-                builder: (context, nutritionProvider, _) => ListView(
-                  children: [
-                    ...nutritionProvider.getFoods
-                        .map((e) => FoodItem(nutrition: e))
-                        .toList(),
-                  ],
-                ),
+        child: Container(
+          child: Column(
+            children: [
+              SizedBox(
+                height: 20,
               ),
-            )
-          ],
+              CustomSearchBar(
+                textEditingController: foodSearch,
+              ),
+              Expanded(
+                child: Consumer<NutritionProvider>(
+                  builder: (context, nutritionProvider, _) => ListView(
+                    children: [
+                      ...nutritionProvider.getFoods
+                          .map((e) => FoodItem(nutrition: e))
+                          .toList(),
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

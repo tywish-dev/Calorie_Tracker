@@ -1,11 +1,9 @@
 import 'package:calorie_tracker/data/constants/constants.dart';
-import 'package:calorie_tracker/ui/providers/user_provider.dart';
 import 'package:calorie_tracker/ui/view/widgets/profile/line_chart.dart';
 import 'package:calorie_tracker/ui/view/widgets/profile/profile_avatar.dart';
 import 'package:calorie_tracker/ui/view/widgets/profile/user_information_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../providers/bmi_provider.dart';
 import '../../providers/user_auth_provider.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -14,7 +12,9 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     UserAuthProvider userProvider = Provider.of<UserAuthProvider>(context);
-    BmiProvider bmiInformation = Provider.of<BmiProvider>(context);
+
+    var bmi = userProvider.user!.weight! /
+        ((userProvider.user!.height! * userProvider.user!.height!) / 10000);
 
     return Scaffold(
       backgroundColor: bgGreen,
@@ -32,8 +32,8 @@ class ProfileScreen extends StatelessWidget {
               userProvider.user!.name!,
               style: const TextStyle(color: Colors.black),
             ),
-            LineChart(),
-            Spacer(),
+            const LineChart(),
+            const Spacer(),
             Padding(
               padding: const EdgeInsets.only(top: 10.0),
               child: Row(
@@ -41,7 +41,7 @@ class ProfileScreen extends StatelessWidget {
                 children: [
                   UserCard(
                     text: "BMI",
-                    value: "${bmiInformation.getBmiResult.toStringAsFixed(2)}",
+                    value: bmi.toStringAsFixed(2),
                   ),
                   UserCard(
                     text: "Age",

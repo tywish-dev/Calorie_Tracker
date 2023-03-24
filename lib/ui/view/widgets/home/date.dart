@@ -25,7 +25,7 @@ class DateState extends State<Date> {
       dayTextStyle: const TextStyle(fontSize: 8),
       monthTextStyle: const TextStyle(fontSize: 10),
       selectedTextColor: bgOrange,
-      selectionColor: Colors.black12,
+      selectionColor: bgGreen,
       onDateChange: (date) {},
     );
   }

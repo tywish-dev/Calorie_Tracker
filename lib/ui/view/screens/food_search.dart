@@ -31,30 +31,51 @@ class _FoodSearchState extends State<FoodSearch> {
         isProfile: true,
         appBar: AppBar(),
       ),
-      body: Center(
-        child: Container(
-          child: Column(
-            children: [
-              SizedBox(
-                height: 20,
-              ),
-              CustomSearchBar(
-                textEditingController: foodSearch,
-              ),
-              Expanded(
-                child: Consumer<NutritionProvider>(
-                  builder: (context, nutritionProvider, _) => ListView(
-                    children: [
-                      ...nutritionProvider.getFoods
-                          .map((e) => FoodItem(nutrition: e))
-                          .toList(),
-                    ],
-                  ),
-                ),
-              )
-            ],
+      body: Stack(
+        children: [
+          Container(
+            height: 140,
+            decoration: BoxDecoration(
+                color: bgGreen,
+                borderRadius: BorderRadius.vertical(
+                    bottom: Radius.elliptical(
+                        MediaQuery.of(context).size.width, 100))),
           ),
-        ),
+          Padding(
+            padding: const EdgeInsets.only(top: 140),
+            child: Opacity(
+              opacity: .6,
+              child: Image.asset(
+                "assets/bakgroundAnimation/background.gif",
+              ),
+            ),
+          ),
+          Center(
+            child: Container(
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 20,
+                  ),
+                  CustomSearchBar(
+                    textEditingController: foodSearch,
+                  ),
+                  Expanded(
+                    child: Consumer<NutritionProvider>(
+                      builder: (context, nutritionProvider, _) => ListView(
+                        children: [
+                          ...nutritionProvider.getFoods
+                              .map((e) => FoodItem(nutrition: e))
+                              .toList(),
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

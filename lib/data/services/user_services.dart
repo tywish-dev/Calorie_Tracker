@@ -36,4 +36,11 @@ class UserServices {
       return UserModel.fromJson(data);
     }
   }
+
+  Future<bool?> updateUserById(String localId, UserModel user) async {
+    http.Response response = await http.put(getUrl("users/$localId"),
+        body: user.toJson(), headers: {'Content-Type': "application/json"});
+
+    return response.statusCode >= 200 && response.statusCode < 300;
+  }
 }

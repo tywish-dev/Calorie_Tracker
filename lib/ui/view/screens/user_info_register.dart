@@ -33,7 +33,6 @@ class _UserInfoRegister extends State<UserInfoRegister> {
   @override
   Widget build(BuildContext context) {
     UserAuthProvider userAuthProvider = Provider.of<UserAuthProvider>(context);
-    UserProvider userProvider = Provider.of<UserProvider>(context);
     return Scaffold(
       body: Column(
         children: [
@@ -80,16 +79,19 @@ class _UserInfoRegister extends State<UserInfoRegister> {
                 CustomTextField(
                     controller: _userSurnameController,
                     label: "Surname",
-                    obscureText: true),
+                    obscureText: false),
                 CustomTextField(
                     controller: _targetCalorieController,
                     label: "Target Calorie",
-                    obscureText: true),
+                    obscureText: false),
                 CustomButton(
                   text: "Next",
                   onPressed: () async {
                     // User modele veri yollanacak
-
+                    userAuthProvider.user!.name =
+                        "${_userNameController.text} ${_userSurnameController.text}";
+                    userAuthProvider.user!.targetCalorie =
+                        int.tryParse(_userNameController.text);
                     Navigator.push(
                         context,
                         MaterialPageRoute(

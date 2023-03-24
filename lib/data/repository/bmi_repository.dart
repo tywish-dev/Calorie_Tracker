@@ -33,6 +33,10 @@ class BmiRepository {
     return height;
   }
 
+  int setWeight(int weight) {
+    return weight;
+  }
+
   double calculateBmi(double height, int weight) {
     return ((weight / (height * height)) * 10000);
   }

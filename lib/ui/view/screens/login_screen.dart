@@ -31,6 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
   void initState() {
     _mailController = TextEditingController(text: "samet@test.com");
     _passwordController = TextEditingController(text: "123456");
+    Navigator.popUntil(context, (route) => true);
     super.initState();
   }
 

@@ -1,8 +1,9 @@
 import 'package:calorie_tracker/data/constants/constants.dart';
+import 'package:calorie_tracker/data/services/user_services.dart';
 import 'package:calorie_tracker/ui/view/screens/login_screen.dart';
-import 'package:calorie_tracker/ui/view/widgets/login/custom_button.dart';
 import 'package:provider/provider.dart';
 import '../../providers/bmi_provider.dart';
+import '../../providers/user_auth_provider.dart';
 import '../widgets/register/gender_card.dart';
 import '../widgets/register/numeric_card.dart';
 import '../widgets/register/slider_card.dart';
@@ -14,6 +15,8 @@ class RegisterUserDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     BmiProvider bmiProvider = Provider.of<BmiProvider>(context);
+    UserAuthProvider userAuthProvider = Provider.of<UserAuthProvider>(context);
+    BmiProvider bmiInformation = Provider.of<BmiProvider>(context);
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
@@ -58,12 +61,24 @@ class RegisterUserDetail extends StatelessWidget {
               ),
               style: ButtonStyle(
                   backgroundColor: MaterialStatePropertyAll(bgGreen)),
-              onPressed: () => Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (BuildContext context) => const LoginScreen(),
-                ),
-              ),
+              onPressed: () async {
+                userAuthProvider.user!.gender =
+                    bmiProvider.getGender == 1 ? "Male" : "Female";
+                userAuthProvider.user!.height = bmiProvider.getHeight.toInt();
+                userAuthProvider.user!.weight = bmiProvider.getWeight;
+                userAuthProvider.user!.age = bmiProvider.getAge;
+                bmiInformation
+                    .setHeight(userAuthProvider.user!.height!.toDouble());
+                bmiInformation.setWeight(userAuthProvider.user!.weight!);
+                await UserServices().updateUserById(
+                    userAuthProvider.user!.localId!, userAuthProvider.user!);
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => const LoginScreen(),
+                  ),
+                );
+              },
             ),
           ],
         ),

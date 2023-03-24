@@ -13,6 +13,7 @@ class UserModel {
   int? height;
   int? age;
   int? weight;
+  int? targetCalorie;
 
   List<Nutrition>? breakfast = [];
   List<Nutrition>? lunch = [];
@@ -25,6 +26,7 @@ class UserModel {
     this.height,
     this.age,
     this.weight,
+    this.targetCalorie,
     this.breakfast,
     this.lunch,
     this.dinner,
@@ -38,6 +40,7 @@ class UserModel {
     int? height,
     int? age,
     int? weight,
+    int? targetCalorie,
     List<Nutrition>? breakfast,
     List<Nutrition>? lunch,
     List<Nutrition>? dinner,
@@ -50,6 +53,7 @@ class UserModel {
       height: height ?? this.height,
       age: age ?? this.age,
       weight: weight ?? this.weight,
+      targetCalorie: targetCalorie ?? this.targetCalorie,
       breakfast: breakfast ?? this.breakfast,
       lunch: lunch ?? this.lunch,
       dinner: dinner ?? this.dinner,
@@ -64,9 +68,10 @@ class UserModel {
       'height': height,
       'age': age,
       'weight': weight,
-      'breakfast': breakfast!.map((x) => x.toMap()).toList(),
-      'lunch': lunch!.map((x) => x.toMap()).toList(),
-      'dinner': dinner!.map((x) => x.toMap()).toList(),
+      'targetCalorie': targetCalorie,
+      'breakfast': breakfast?.map((x) => x.toMap()).toList(),
+      'lunch': lunch?.map((x) => x.toMap()).toList(),
+      'dinner': dinner?.map((x) => x.toMap()).toList(),
     };
   }
 
@@ -79,6 +84,8 @@ class UserModel {
       height: map['height'] != null ? map['height'] as int : null,
       age: map['age'] != null ? map['age'] as int : null,
       weight: map['weight'] != null ? map['weight'] as int : null,
+      targetCalorie:
+          map['targetCalorie'] != null ? map['targetCalorie'] as int : null,
       breakfast: map['breakfast'] != null
           ? List<Nutrition>.from(
               (map['breakfast'] as List<int>).map<Nutrition?>(
@@ -110,7 +117,7 @@ class UserModel {
 
   @override
   String toString() {
-    return 'UserModel(id: $id, localId: $localId, name: $name, gender: $gender, height: $height, age: $age, weight: $weight, breakfast: $breakfast, lunch: $lunch, dinner: $dinner)';
+    return 'UserModel(id: $id, localId: $localId, name: $name, gender: $gender, height: $height, age: $age, weight: $weight, targetCalorie: $targetCalorie, breakfast: $breakfast, lunch: $lunch, dinner: $dinner)';
   }
 
   @override
@@ -125,6 +132,7 @@ class UserModel {
         other.height == height &&
         other.age == age &&
         other.weight == weight &&
+        other.targetCalorie == targetCalorie &&
         listEquals(other.breakfast, breakfast) &&
         listEquals(other.lunch, lunch) &&
         listEquals(other.dinner, dinner);
@@ -139,6 +147,7 @@ class UserModel {
         height.hashCode ^
         age.hashCode ^
         weight.hashCode ^
+        targetCalorie.hashCode ^
         breakfast.hashCode ^
         lunch.hashCode ^
         dinner.hashCode;

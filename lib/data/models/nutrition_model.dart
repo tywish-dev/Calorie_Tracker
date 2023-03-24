@@ -2,6 +2,7 @@
 import 'dart:convert';
 
 class Nutrition {
+  String? id;
   double sugar_g;
   double fiber_g;
   double serving_size_g;
@@ -15,6 +16,7 @@ class Nutrition {
   double protein_g;
   double carbohydrates_total_g;
   Nutrition({
+    this.id,
     required this.sugar_g,
     required this.fiber_g,
     required this.serving_size_g,
@@ -30,6 +32,7 @@ class Nutrition {
   });
 
   Nutrition copyWith({
+    String? id,
     double? sugar_g,
     double? fiber_g,
     double? serving_size_g,
@@ -44,6 +47,7 @@ class Nutrition {
     double? carbohydrates_total_g,
   }) {
     return Nutrition(
+      id: id ?? this.id,
       sugar_g: sugar_g ?? this.sugar_g,
       fiber_g: fiber_g ?? this.fiber_g,
       serving_size_g: serving_size_g ?? this.serving_size_g,
@@ -101,14 +105,15 @@ class Nutrition {
 
   @override
   String toString() {
-    return 'Nutrition(sugar_g: $sugar_g, fiber_g: $fiber_g, serving_size_g: $serving_size_g, sodium_mg: $sodium_mg, name: $name, potassium_mg: $potassium_mg, fat_saturated_g: $fat_saturated_g, fat_total_g: $fat_total_g, calories: $calories, cholesterol_mg: $cholesterol_mg, protein_g: $protein_g, carbohydrates_total_g: $carbohydrates_total_g)';
+    return 'Nutrition(id: $id, sugar_g: $sugar_g, fiber_g: $fiber_g, serving_size_g: $serving_size_g, sodium_mg: $sodium_mg, name: $name, potassium_mg: $potassium_mg, fat_saturated_g: $fat_saturated_g, fat_total_g: $fat_total_g, calories: $calories, cholesterol_mg: $cholesterol_mg, protein_g: $protein_g, carbohydrates_total_g: $carbohydrates_total_g)';
   }
 
   @override
   bool operator ==(covariant Nutrition other) {
     if (identical(this, other)) return true;
 
-    return other.sugar_g == sugar_g &&
+    return other.id == id &&
+        other.sugar_g == sugar_g &&
         other.fiber_g == fiber_g &&
         other.serving_size_g == serving_size_g &&
         other.sodium_mg == sodium_mg &&
@@ -124,7 +129,8 @@ class Nutrition {
 
   @override
   int get hashCode {
-    return sugar_g.hashCode ^
+    return id.hashCode ^
+        sugar_g.hashCode ^
         fiber_g.hashCode ^
         serving_size_g.hashCode ^
         sodium_mg.hashCode ^

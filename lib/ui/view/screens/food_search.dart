@@ -32,6 +32,9 @@ class _FoodSearchState extends State<FoodSearch> {
       body: Center(
         child: Column(
           children: [
+            SizedBox(
+              height: 10,
+            ),
             CustomSearchBar(
               textEditingController: foodSearch,
             ),

@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'package:calorie_tracker/data/models/nutrition_model.dart';
+
 import '../models/user_model.dart';
 import 'package:http/http.dart' as http;
 import 'user_auth.dart';
@@ -42,5 +44,23 @@ class UserServices {
         body: user.toJson(), headers: {'Content-Type': "application/json"});
 
     return response.statusCode >= 200 && response.statusCode < 300;
+  }
+
+  Future<Nutrition?> addNutrition(
+      String localId, String category, Nutrition n) async {
+    http.Response response =
+        await http.post(getNutUrl("users/$localId/", category));
+
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body);
+      n.id = data["name"];
+
+      return n;
+    }
+  }
+
+  Future<List<Nutrition>?> getNutritionById(
+      String localId, String nutId) async {
+    var response = await http.get(Uri.parse("users/$localId/$nutId"));
   }
 }

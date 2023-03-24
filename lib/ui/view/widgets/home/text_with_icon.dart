@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class TextWithIcon extends StatelessWidget {
   const TextWithIcon(
@@ -19,12 +17,12 @@ class TextWithIcon extends StatelessWidget {
         ),
         Text(
           num,
-          style: TextStyle(
+          style: const TextStyle(
             letterSpacing: 2,
             fontSize: 24,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 8,
         ),
         Text(

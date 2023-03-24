@@ -1,19 +1,24 @@
+import 'package:calorie_tracker/data/services/user_services.dart';
+import 'package:calorie_tracker/ui/providers/user_auth_provider.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:provider/provider.dart';
 
 class CircleProgressBar extends StatelessWidget {
   const CircleProgressBar({super.key});
 
   @override
   Widget build(BuildContext context) {
+    UserAuthProvider userAuthProvider = Provider.of<UserAuthProvider>(context);
+
     return Stack(
       alignment: Alignment.center,
       children: [
         CircularPercentIndicator(
           radius: 100.0,
           lineWidth: 20.0,
-          percent: 0.8,
+          percent: (2000 / 3000),
           progressColor: Colors.orange,
           backgroundColor: Colors.black12,
           animation: true,
@@ -40,8 +45,9 @@ class CircleProgressBar extends StatelessWidget {
                 const SizedBox(
                   height: 5,
                 ),
+                // ignore: prefer_const_constructors
                 Text(
-                  Faker().randomGenerator.integer(3000, min: 1900).toString(),
+                  "${2500 - 2000}",
                   style: const TextStyle(
                       color: Colors.black,
                       fontSize: 36,

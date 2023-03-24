@@ -29,8 +29,8 @@ class _LoginScreenState extends State<LoginScreen> {
   late TextEditingController _passwordController;
   @override
   void initState() {
-    _mailController = TextEditingController(text: "samet@test.com");
-    _passwordController = TextEditingController(text: "123456");
+    _mailController = TextEditingController();
+    _passwordController = TextEditingController();
     Navigator.popUntil(context, (route) => true);
     super.initState();
   }
@@ -128,7 +128,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               userAuthProvider.user = await UserServices()
                                   .getUserByLocalId(
                                       userAuthProvider.user!.localId!,
-                                      userAuthProvider.user?.id);
+                                      userAuthProvider.user!.id);
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(

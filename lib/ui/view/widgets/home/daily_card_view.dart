@@ -90,7 +90,9 @@ class CardView extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        userAuthProvider.nList![0].name!,
+                        userAuthProvider.nList!.isEmpty
+                            ? ""
+                            : userAuthProvider.nList![0].name!,
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 50),
@@ -115,7 +117,7 @@ class CardView extends StatelessWidget {
                               height: 100,
                               child: Image.network(
                                 Faker().image.image(
-                                  keywords: ["$foodName", "food"],
+                                  keywords: [foodName, "food"],
                                 ),
                               ),
                             ),

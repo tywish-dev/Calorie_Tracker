@@ -48,15 +48,12 @@ class HomeScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         width: 100,
                         child: TextWithIcon(
                           label: "Eaten",
-                          num: Faker()
-                              .randomGenerator
-                              .integer(500, min: 30)
-                              .toString(),
-                          icon: const Icon(Icons.local_dining),
+                          num: "1500",
+                          icon: Icon(Icons.local_dining),
                         ),
                       ),
                       const CircleProgressBar(),
@@ -82,7 +79,7 @@ class HomeScreen extends StatelessWidget {
                       const LinearProgressBar(
                         color: Colors.green,
                         label: "CARB",
-                        percent: 0.3,
+                        percent: 0.5,
                       ),
                       LinearProgressBar(
                         label: "PROTEIN",

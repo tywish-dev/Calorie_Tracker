@@ -18,7 +18,7 @@ class _FoodSearchState extends State<FoodSearch> {
   late TextEditingController foodSearch;
   @override
   void initState() {
-    foodSearch = TextEditingController(text: "tomato");
+    foodSearch = TextEditingController();
     super.initState();
   }
 

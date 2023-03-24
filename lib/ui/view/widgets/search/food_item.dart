@@ -25,39 +25,43 @@ class FoodItem extends StatelessWidget {
         child: Container(
           height: 60,
           decoration: BoxDecoration(
-              border: Border.all(
-                width: 1,
-                color: bgOrange,
-              ),
-              borderRadius: BorderRadius.circular(10)
-              // color: Colors.amber,
-              ),
+            border: Border.all(
+              width: 1,
+              color: bgOrange,
+            ),
+            borderRadius: BorderRadius.circular(10),
+          ),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              const SizedBox(
+                width: 22,
+              ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    nutrition.name,
-                    style: TextStyle(
+                    "${nutrition.name[0].toUpperCase()}${nutrition.name.substring(1).toLowerCase()}",
+                    style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
                   Text(
-                    "${nutrition.calories} Calories, ${nutrition.serving_size_g.toInt()} gr, contains ${nutrition.protein_g} gr protein",
-                    style: TextStyle(
+                    "${nutrition.calories} Calories, ${nutrition.serving_size_g.toInt()} gr",
+                    style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 14,
                         color: Colors.black54),
                   ),
                 ],
-              )
+              ),
+              const Spacer(),
+              IconButton(onPressed: () {}, icon: const Icon(Icons.add))
             ],
           ),
         ),

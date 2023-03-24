@@ -71,4 +71,9 @@ class BmiProvider with ChangeNotifier {
     _height = bmiRepo.setHeight(val);
     notifyListeners();
   }
+
+  void setWeight(int val) {
+    _weight = bmiRepo.setWeight(val);
+    notifyListeners();
+  }
 }

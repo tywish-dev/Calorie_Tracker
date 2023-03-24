@@ -1,37 +1,39 @@
 import 'package:calorie_tracker/data/constants/constants.dart';
-import 'package:calorie_tracker/ui/providers/user_provider.dart';
 import 'package:calorie_tracker/ui/view/widgets/profile/line_chart.dart';
 import 'package:calorie_tracker/ui/view/widgets/profile/profile_avatar.dart';
 import 'package:calorie_tracker/ui/view/widgets/profile/user_information_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../providers/bmi_provider.dart';
-import '../widgets/home/bottom_nav_bar.dart';
+import '../../providers/user_auth_provider.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    UserProvider userProvider = Provider.of<UserProvider>(context);
-    BmiProvider bmiInformation = Provider.of<BmiProvider>(context);
-    double calculateBmi = bmiInformation.getWeight /
-        (bmiInformation.getHeight * bmiInformation.getHeight / 10000);
+    UserAuthProvider userProvider = Provider.of<UserAuthProvider>(context);
+
+    var bmi = userProvider.user!.weight! /
+        ((userProvider.user!.height! * userProvider.user!.height!) / 10000);
+
     return Scaffold(
       backgroundColor: bgGreen,
       body: SafeArea(
         child: Column(
           children: [
-            const ProfileAvatar(),
+            const Padding(
+              padding: EdgeInsets.only(top: 20),
+              child: ProfileAvatar(),
+            ),
             const SizedBox(
-              height: 40,
+              height: 20,
             ),
             Text(
-              userProvider.user.localId,
+              userProvider.user!.name!,
               style: const TextStyle(color: Colors.black),
             ),
-            LineChart(),
-            Spacer(),
+            const LineChart(),
+            const Spacer(),
             Padding(
               padding: const EdgeInsets.only(top: 10.0),
               child: Row(
@@ -39,11 +41,11 @@ class ProfileScreen extends StatelessWidget {
                 children: [
                   UserCard(
                     text: "BMI",
-                    value: "${calculateBmi.toStringAsFixed(2)}",
+                    value: bmi.toStringAsFixed(2),
                   ),
                   UserCard(
                     text: "Age",
-                    value: bmiInformation.getAge.toString(),
+                    value: userProvider.user!.age.toString(),
                   )
                 ],
               ),
@@ -55,10 +57,10 @@ class ProfileScreen extends StatelessWidget {
                 children: [
                   UserCard(
                       text: "Height",
-                      value: bmiInformation.getHeight.toString()),
+                      value: userProvider.user!.height.toString()),
                   UserCard(
                       text: "Weight",
-                      value: bmiInformation.getWeight.toString())
+                      value: userProvider.user!.weight.toString())
                 ],
               ),
             ),

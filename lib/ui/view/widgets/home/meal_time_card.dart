@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../screens/meal_screen.dart';
+
 class MealTimeCard extends StatelessWidget {
   const MealTimeCard({super.key});
 
@@ -12,7 +14,17 @@ class MealTimeCard extends StatelessWidget {
         child: Column(
           children: [
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => MealScreen(
+                            mealName: "Breakfast",
+                            kcal: 30,
+                            kcalCarb: 40,
+                            kcalPro: 50,
+                            kcalFat: 50)));
+              },
               child: Container(
                 height: 40,
                 child: Row(
@@ -31,7 +43,17 @@ class MealTimeCard extends StatelessWidget {
               thickness: 5,
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => MealScreen(
+                            mealName: "Lunch",
+                            kcal: 30,
+                            kcalCarb: 40,
+                            kcalPro: 50,
+                            kcalFat: 50)));
+              },
               child: Container(
                 height: 40,
                 child: Row(

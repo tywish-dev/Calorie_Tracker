@@ -1,3 +1,7 @@
+// ignore_for_file: avoid_print, use_build_context_synchronously
+
+import 'package:calorie_tracker/data/services/user_auth.dart';
+import 'package:calorie_tracker/data/services/user_services.dart';
 import 'package:calorie_tracker/ui/view/screens/main_screen.dart';
 import 'package:calorie_tracker/ui/view/screens/register_user_detail_screen.dart';
 import 'package:calorie_tracker/ui/view/screens/user_info_register.dart';
@@ -25,8 +29,9 @@ class _LoginScreenState extends State<LoginScreen> {
   late TextEditingController _passwordController;
   @override
   void initState() {
-    _mailController = TextEditingController(text: "samettt@gmail.com");
-    _passwordController = TextEditingController(text: "asdqweasd");
+    _mailController = TextEditingController(text: "samet@test.com");
+    _passwordController = TextEditingController(text: "123456");
+    Navigator.popUntil(context, (route) => true);
     super.initState();
   }
 
@@ -106,20 +111,37 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             );
                           } else {
-                            try {
-                              await userAuthProvider.signInWithPassword(
-                                UserAuthModel(
-                                    email: _mailController.text,
-                                    password: _passwordController.text,
-                                    returnSecureToken: true),
-                                userProvider.user,
-                              );
+                            await userAuthProvider.signInBoolean(
+                              UserAuthModel(
+                                  email: _mailController.text,
+                                  password: _passwordController.text,
+                                  returnSecureToken: true),
+                              userAuthProvider.user!,
+                            );
+                            print(userAuthProvider.result);
+                            if (userAuthProvider.result == true) {
                               Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => MainScreen()));
-                            } catch (e) {
-                              print(e.toString());
+                                      builder: (context) =>
+                                          const MainScreen()));
+                              userAuthProvider.user = await UserServices()
+                                  .getUserByLocalId(
+                                      userAuthProvider.user!.localId!,
+                                      userAuthProvider.user?.id);
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Center(
+                                    child: Text(
+                                      'Invalid username or password!',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 24),
+                                    ),
+                                  ),
+                                ),
+                              );
                             }
                           }
                         },
@@ -139,7 +161,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const UserInfoRegister(),
+                              builder: (context) => const RegisterScreen(),
                             ),
                           );
                         },

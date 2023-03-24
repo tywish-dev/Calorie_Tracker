@@ -1,6 +1,7 @@
 import 'package:calorie_tracker/data/models/user_auth_model.dart';
 import 'package:calorie_tracker/data/models/user_model.dart';
 import 'package:calorie_tracker/ui/providers/user_auth_provider.dart';
+import 'package:calorie_tracker/ui/view/screens/user_info_register.dart';
 import 'package:provider/provider.dart';
 
 import '../../providers/user_provider.dart';
@@ -120,12 +121,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               email: _mailController.text,
                               password: _passwordController.text,
                               returnSecureToken: true),
-                          userProvider.user);
+                          userAuthProvider.user!);
 
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const RegisterUserDetail(),
+                          builder: (context) => const UserInfoRegister(),
                         ),
                       );
                     }

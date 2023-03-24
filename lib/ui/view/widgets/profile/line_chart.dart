@@ -19,42 +19,39 @@ class _LineChartState extends State<LineChart> {
     UserAuthProvider userProvider = Provider.of<UserAuthProvider>(context);
     double bmi = userProvider.user!.weight! /
         ((userProvider.user!.height! * userProvider.user!.height!) / 10000);
-    _chartData = getChartData(bmi);
     return Center(
-      child: SizedBox(
-        height: 250,
-        width: 300,
-        child: SfCartesianChart(
-          title: ChartTitle(
-              text: "BMI Tracer", textStyle: const TextStyle(color: bgOrange)),
-          plotAreaBackgroundColor: bgGreen,
-          series: <ChartSeries>[
-            LineSeries<Salesdata, double>(
-              color: bgOrange,
-              dataSource: _chartData,
-              xValueMapper: (Salesdata sales, _) => sales.date,
-              yValueMapper: (Salesdata sales, _) => sales.value,
-            )
-          ],
-        ),
-      ),
-    );
+        child: SizedBox(
+            height: 250,
+            width: 300,
+            child: SfCartesianChart(
+                primaryXAxis: CategoryAxis(),
+                // Chart title
+                title: ChartTitle(
+                    text: 'BMI Tracker', textStyle: TextStyle(color: bgOrange)),
+                // Enable legend
+                legend: Legend(isVisible: false),
+                // Enable tooltip
+
+                series: <LineSeries<Salesdata, String>>[
+                  LineSeries<Salesdata, String>(
+                      color: bgOrange,
+                      dataSource: <Salesdata>[
+                        Salesdata("No", 18),
+                        Salesdata("De", 30),
+                        Salesdata("Je", 22),
+                        Salesdata("Fe", 19),
+                        Salesdata("Ma", double.parse(bmi.toStringAsFixed(2))),
+                      ],
+                      xValueMapper: (Salesdata sales, _) => sales.value,
+                      yValueMapper: (Salesdata sales, _) => sales.date,
+                      // Enable data label
+                      dataLabelSettings: DataLabelSettings(isVisible: true))
+                ])));
   }
 }
 
-List<Salesdata> getChartData(double bmi) {
-  final List<Salesdata> chartData = [
-    Salesdata(18, 2019),
-    Salesdata(22, 2020),
-    Salesdata(20, 2021),
-    Salesdata(25, 2022),
-    Salesdata(bmi, 2023),
-  ];
-  return chartData;
-}
-
 class Salesdata {
-  final double value;
+  final String value;
   final double date;
   Salesdata(this.value, this.date);
 }

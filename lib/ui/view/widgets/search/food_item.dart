@@ -98,14 +98,6 @@ class _FoodItemState extends State<FoodItem> {
                                 SizedBox(
                                   width: 150,
                                   child: CustomButton(
-                                    text: "Delete",
-                                    onPressed: () {},
-                                    bgColor: false,
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 150,
-                                  child: CustomButton(
                                     text: "Add",
                                     onPressed: () {},
                                     bgColor: false,

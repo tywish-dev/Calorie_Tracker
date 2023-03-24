@@ -1,6 +1,5 @@
-import 'dart:convert';
 import 'package:calorie_tracker/data/constants/constants.dart';
-
+import 'package:lottie/lottie.dart';
 import '/ui/providers/nutrition_provider.dart';
 import '/ui/view/widgets/home/custom_app_bar.dart';
 import '/ui/view/widgets/search/food_item.dart';
@@ -44,35 +43,35 @@ class _FoodSearchState extends State<FoodSearch> {
           Padding(
             padding: const EdgeInsets.only(top: 140),
             child: Opacity(
-              opacity: .6,
-              child: Image.asset(
-                "assets/bakgroundAnimation/background.gif",
-              ),
-            ),
+                opacity: .6,
+                child: Lottie.network(
+                    "https://assets3.lottiefiles.com/packages/lf20_TmewUx.json",
+                    repeat: false)),
           ),
           Center(
-            child: Container(
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 20,
-                  ),
-                  CustomSearchBar(
-                    textEditingController: foodSearch,
-                  ),
-                  Expanded(
-                    child: Consumer<NutritionProvider>(
-                      builder: (context, nutritionProvider, _) => ListView(
-                        children: [
-                          ...nutritionProvider.getFoods
-                              .map((e) => FoodItem(nutrition: e))
-                              .toList(),
-                        ],
-                      ),
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 20,
+                ),
+                CustomSearchBar(
+                  textEditingController: foodSearch,
+                ),
+                const SizedBox(
+                  height: 50,
+                ),
+                Expanded(
+                  child: Consumer<NutritionProvider>(
+                    builder: (context, nutritionProvider, _) => ListView(
+                      children: [
+                        ...nutritionProvider.getFoods
+                            .map((e) => FoodItem(nutrition: e))
+                            .toList(),
+                      ],
                     ),
-                  )
-                ],
-              ),
+                  ),
+                )
+              ],
             ),
           ),
         ],

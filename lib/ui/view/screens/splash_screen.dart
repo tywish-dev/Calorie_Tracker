@@ -19,7 +19,6 @@ class SplashScreen extends StatelessWidget {
         ),
         duration: 2000,
         screenFunction: () async {
-          //datalar çekilecek
           return const LoginScreen();
         },
       ),

@@ -10,6 +10,8 @@ Uri getAuthUrl(String endpoint) =>
     Uri.parse("$AUTH_BASE_URL$endpoint?key=$AUTH_API");
 Uri getUrl(String endpoint, idToken) =>
     Uri.parse("$BASE_URL$endpoint.json?auth=$idToken");
+Uri getNutUrl(String endpoint, category) =>
+    Uri.parse("$BASE_URL$endpoint$category.json");
 
 class UserAuth {
   Future<UserModel?> signUp(UserAuthModel userAuth, UserModel user) async {

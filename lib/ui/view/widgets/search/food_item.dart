@@ -34,7 +34,7 @@ class FoodItem extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              SizedBox(
+              const SizedBox(
                 width: 22,
               ),
               Column(
@@ -59,7 +59,9 @@ class FoodItem extends StatelessWidget {
                         color: Colors.black54),
                   ),
                 ],
-              )
+              ),
+              const Spacer(),
+              IconButton(onPressed: () {}, icon: const Icon(Icons.add))
             ],
           ),
         ),

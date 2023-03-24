@@ -2,6 +2,8 @@ import 'package:calorie_tracker/data/constants/constants.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 
+import 'dropDown.dart';
+
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   const CustomAppBar(
       {super.key,
@@ -52,17 +54,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                 color: bgOrange,
               )),
       actions: [
-        Padding(
-          padding: const EdgeInsets.only(right: 5.0),
-          child: IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.more_horiz),
-            iconSize: 40,
-            splashColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            color: Colors.black87,
-          ),
-        ),
+        HomeDropDown(),
       ],
     );
   }

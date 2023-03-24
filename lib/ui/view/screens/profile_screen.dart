@@ -8,6 +8,11 @@ import 'package:provider/provider.dart';
 
 import '../../providers/bmi_provider.dart';
 import '../widgets/home/bottom_nav_bar.dart';
+import '/ui/providers/user_provider.dart';
+import '/ui/view/widgets/profile/bmi_card.dart';
+import '/ui/view/widgets/profile/profile_avatar.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -66,6 +71,7 @@ class ProfileScreen extends StatelessWidget {
             const SizedBox(
               height: 10,
             )
+
           ],
         ),
       ),

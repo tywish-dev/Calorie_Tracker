@@ -1,11 +1,12 @@
-import 'package:calorie_tracker/ui/view/widgets/Nutrition%20Facts/mealDetails.dart';
-import 'package:calorie_tracker/ui/view/widgets/Nutrition%20Facts/mealInformation.dart';
+import '/data/models/nutrition_model.dart';
+import '/ui/view/widgets/Nutrition%20Facts/mealDetails.dart';
+import '/ui/view/widgets/Nutrition%20Facts/mealInformation.dart';
 import 'package:flutter/material.dart';
 import '../../../data/constants/constants.dart';
 
 class NutritionFacts extends StatelessWidget {
-  const NutritionFacts({super.key});
-
+  const NutritionFacts({super.key, required this.nutrition});
+  final Nutrition nutrition;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,20 +37,20 @@ class NutritionFacts extends StatelessWidget {
                 decoration: const BoxDecoration(
                     border: Border(
                         bottom: BorderSide(width: 10, color: Colors.black54))),
-                child: const Row(
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Tomato",
-                      style: TextStyle(
+                      "${nutrition.name[0].toUpperCase()}${nutrition.name.substring(1).toLowerCase()}",
+                      style: const TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
                           color: Colors.black),
                     ),
                     Text(
-                      "(55g)",
-                      style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                      "(${nutrition.serving_size_g.toInt()})",
+                      style: const TextStyle(
+                          fontSize: 25, fontWeight: FontWeight.bold),
                     )
                   ],
                 ),
@@ -60,10 +61,10 @@ class NutritionFacts extends StatelessWidget {
                 decoration: const BoxDecoration(
                     border: Border(
                         bottom: BorderSide(width: 5, color: Colors.black54))),
-                child: const Row(
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       "Calories",
                       style: TextStyle(
                           fontSize: 30,
@@ -71,9 +72,9 @@ class NutritionFacts extends StatelessWidget {
                           color: Colors.black),
                     ),
                     Text(
-                      "230",
-                      style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                      "${nutrition.calories.toInt()}",
+                      style: const TextStyle(
+                          fontSize: 25, fontWeight: FontWeight.bold),
                     )
                   ],
                 ),
@@ -84,8 +85,8 @@ class NutritionFacts extends StatelessWidget {
                 decoration: const BoxDecoration(
                     border: Border(
                         bottom: BorderSide(color: Colors.black54, width: 1))),
-                child: const Row(
-                  children: [
+                child: Row(
+                  children: const [
                     Spacer(),
                     Text(
                       "% Daily Value*",
@@ -95,26 +96,53 @@ class NutritionFacts extends StatelessWidget {
                   ],
                 ),
               ),
-              const MealInformation(
-                  mealName: "Total Fat", mealgr: "8", percentage: "10"),
-              const MealDetails(
-                  mealName: "Satured Fat", mealgr: "1", percentage: "10"),
-              const MealDetails(
-                  mealName: "Trans Fat", mealgr: "0", percentage: "5"),
-              const MealInformation(
-                  mealName: "Cholesterol", mealgr: "0", percentage: "0"),
-              const MealInformation(
-                  mealName: "Sodium", mealgr: "1.6", percentage: "8"),
-              const MealInformation(
+              MealInformation(
+                  mealName: "Total Fat",
+                  mealgr: "${nutrition.fat_total_g}",
+                  percentage:
+                      "${(nutrition.serving_size_g / nutrition.fat_total_g) ~/ 30}"),
+              MealDetails(
+                  mealName: "Satured Fat",
+                  mealgr: "${nutrition.fat_saturated_g}",
+                  percentage: nutrition.fat_saturated_g == 0
+                      ? "0"
+                      : "${(nutrition.serving_size_g / nutrition.fat_saturated_g) ~/ 30}"),
+              MealInformation(
+                  mealName: "Cholesterol",
+                  mealgr: "${nutrition.cholesterol_mg}",
+                  percentage: nutrition.cholesterol_mg == 0
+                      ? "0"
+                      : "${(nutrition.serving_size_g / nutrition.cholesterol_mg) ~/ 30}"),
+              MealInformation(
+                  mealName: "Sodium",
+                  mealgr: "${nutrition.sodium_mg}",
+                  percentage: nutrition.sodium_mg == 0
+                      ? "0"
+                      : "${(nutrition.serving_size_g / nutrition.sodium_mg) ~/ 30}"),
+              MealInformation(
                   mealName: "Total Carbohydrate",
-                  mealgr: "37",
-                  percentage: "13"),
-              const MealDetails(
-                  mealName: "Dietary Fiber", mealgr: "4", percentage: "14"),
-              const MealDetails(
-                  mealName: "Total Sugars", mealgr: "12", percentage: ""),
-              const MealInformation(
-                  mealName: "Protein", mealgr: "3", percentage: ""),
+                  mealgr: "${nutrition.carbohydrates_total_g}",
+                  percentage: nutrition.carbohydrates_total_g == 0
+                      ? "0"
+                      : "${(nutrition.serving_size_g / nutrition.carbohydrates_total_g) ~/ 30}"),
+              MealDetails(
+                  mealName: "Dietary Fiber",
+                  mealgr: "${nutrition.fiber_g}",
+                  percentage: nutrition.fiber_g == 0
+                      ? "0"
+                      : "${(nutrition.serving_size_g / nutrition.fiber_g) ~/ 30}"),
+              MealDetails(
+                  mealName: "Total Sugars",
+                  mealgr: "${nutrition.sugar_g}",
+                  percentage: nutrition.sugar_g == 0
+                      ? "0"
+                      : "${(nutrition.serving_size_g / nutrition.sugar_g) ~/ 30}"),
+              MealInformation(
+                  mealName: "Protein",
+                  mealgr: "${nutrition.protein_g}",
+                  percentage: nutrition.protein_g == 0
+                      ? "0"
+                      : "${(nutrition.serving_size_g / nutrition.protein_g) ~/ 30}"),
             ],
           ),
         ),

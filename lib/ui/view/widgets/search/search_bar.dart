@@ -1,6 +1,5 @@
-import 'package:calorie_tracker/ui/providers/nutrition_provider.dart';
+import '/ui/providers/nutrition_provider.dart';
 import 'package:provider/provider.dart';
-
 import '/data/constants/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -19,10 +18,9 @@ class CustomSearchBar extends StatelessWidget {
           child: TextField(
             controller: textEditingController,
             cursorColor: bgOrange,
+            autocorrect: false,
             onSubmitted: (value) async {
-              await nutritionProvider
-                  .getNutrition(value)
-                  .then((_) => print(nutritionProvider.getFoods));
+              await nutritionProvider.getNutrition(value);
             },
             decoration: InputDecoration(
               prefixIcon: const Icon(

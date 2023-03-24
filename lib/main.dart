@@ -1,3 +1,4 @@
+import 'package:calorie_tracker/ui/providers/dropdown_provider.dart';
 import 'package:calorie_tracker/ui/view/screens/home_screen.dart';
 import 'package:calorie_tracker/ui/view/screens/profile_screen.dart';
 import 'package:calorie_tracker/ui/view/widgets/home/date.dart';
@@ -29,6 +30,7 @@ void main() {
       ListenableProvider(create: (_) => RecipeProvider()),
       ListenableProvider(create: (_) => UserProvider()),
       ListenableProvider(create: (_) => PageProvider()),
+      ListenableProvider(create: (_) => DropdownProvider()),
     ],
     child: const MyApp(),
   ));
